@@ -10,7 +10,7 @@
 html,
 body {
 	height: 100%;
-	font-family: 'Inter', 'Segoe UI', -apple-system, sans-serif !important;
+	font-family: 'Inter', 'Segoe UI', -apple-system, sans-serif;
 	color: #1a1a1a;
 	background-color: #f9fafb;
 }
@@ -3615,7 +3615,9 @@ html[dir="rtl"] {
 // }
 
 }
-
+.AgreePilotlogo{
+	display: none;
+}
 .chosaeFilebtn {
 	height: 44px;
 	font-size: 13px;

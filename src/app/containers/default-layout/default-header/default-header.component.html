@@ -24,6 +24,11 @@
 
       <div class="d-flex justify-content-end align-items-center lng-btn">
 
+        <!-- Theme toggle (moon/sun) placed immediately left of language dropdown -->
+        <button class="btn theme-toggle me-2 d-flex align-items-center" type="button" (click)="toggleTheme()" aria-label="Toggle theme">
+          <i [ngClass]="isPurpleTheme ? 'fa-solid fa-sun' : 'fa-regular fa-moon'"></i>
+        </button>
+
         <div class="langDropdown d-flex align-items-center">
 
           <span class="fi fi-gb"></span>

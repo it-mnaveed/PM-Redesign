@@ -119,4 +119,26 @@
   .user-dropdown-text {
     flex: 1;
   }
+
+  /* Theme toggle button next to language selector */
+  .theme-toggle {
+    background: transparent;
+    border: none;
+    color: #4F46E5; /* default blue icon color */
+    font-size: 1.05rem;
+    padding: 6px 8px;
+    border-radius: 8px;
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+
+  .theme-toggle:hover {
+    background: rgba(79,70,229,0.06);
+    color: #4F46E5;
+  }
+
+  /* When purple theme active, tint the toggle icon to purple */
+  :host ::ng-deep body.agreePilotPurpulr .theme-toggle,
+  :host ::ng-deep body.agreePilotPurple .theme-toggle {
+    color: #94236D;
+  }
 }

@@ -25,6 +25,7 @@ export class DefaultHeaderComponent extends HeaderComponent implements OnInit {
   public newTasks = new Array(5)
   public newNotifications = new Array(5)
   CUrrentDate: string = '';
+  isPurpleTheme: boolean = false;
   currentUserInfo: any | { Id: number; UserCode: string; FullName: string; RoleName: string; RoleID: number; UserImage: string; };
   UserFullName: any;
   UserType: any;
@@ -54,6 +55,26 @@ export class DefaultHeaderComponent extends HeaderComponent implements OnInit {
     }
     this.switchLang('')
     this.GetPendingDocuments("");
+
+    // Initialize theme state based on body class (supports both spellings)
+    const body = document.body;
+    this.isPurpleTheme = body.classList.contains('agreePilotPurpulr') || body.classList.contains('agreePilotPurple');
+  }
+
+  toggleTheme() {
+    const body = document.body;
+    const classA = 'agreePilotPurpulr';
+    const classB = 'agreePilotPurple';
+
+    if (this.isPurpleTheme) {
+      body.classList.remove(classA);
+      body.classList.remove(classB);
+      this.isPurpleTheme = false;
+    } else {
+      body.classList.add(classA);
+      body.classList.add(classB);
+      this.isPurpleTheme = true;
+    }
   }
   getFormattedDate(): string {
     const today = new Date();

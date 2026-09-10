@@ -1,0 +1,253 @@
+/* AgreePilot Purple Theme Overrides
+   Scope: apply only when body has class `agreePilotPurpulr`
+   This file overrides existing blue-gradient theme colors with
+   the provided purple gradient.
+*/
+
+.agreePilotPurple {
+
+  /* Purple gradient values */
+  --ap-purple-start: rgba(148, 35, 109, 1);
+  --ap-purple-end: rgba(121, 23, 82, 1);
+  --ap-purple-gradient: linear-gradient(160deg, var(--ap-purple-start) 0%, var(--ap-purple-end) 100%);
+  --ap-purple: #94236D;
+//   font-family: 'Poppins', sans-serif !important;
+
+  /* Avatar / small circular icons */
+  .avatar-initials {
+    background: var(--ap-purple) !important;
+    background: var(--ap-purple-gradient) !important;
+    box-shadow: 0 4px 12px rgba(148,35,109,0.16) !important;
+  }
+
+  /* Welcome / hero cards */
+  .welcome-card {
+    background: var(--ap-purple) !important;
+    background: var(--ap-purple-gradient) !important;
+    box-shadow: 0 10px 30px rgba(148,35,109,0.2) !important;
+    color: #fff !important;
+  }
+
+  /* Tile icons and progress bars */
+  .tile .tile-icon,
+  .tiles-grid .tile .tile-icon {
+    background: var(--ap-purple) !important;
+    background: var(--ap-purple-gradient) !important;
+  }
+
+  .tile .tile-progress .progress-bar,
+  .progress-bar {
+    background: var(--ap-purple) !important;
+    background: var(--ap-purple-gradient) !important;
+  }
+
+  /* Modal / dialog headers */
+  .modal-header {
+    background: var(--ap-purple) !important;
+    background: var(--ap-purple-gradient) !important;
+    color: #fff !important;
+  }
+
+  /* Primary / success buttons that used the blue gradient */
+  .btn-design .btn-success,
+  .btn.btn-success,
+  .btn-success {
+    background: var(--ap-purple) !important;
+    background: var(--ap-purple-gradient) !important;
+    color: #fff !important;
+    border-color: transparent !important;
+  }
+
+  /* Wizard active step */
+  .wizard-steps li.active,
+  .wizard-steps li.active .step-number {
+    background: var(--ap-purple) !important;
+    background: var(--ap-purple-gradient) !important;
+    box-shadow: 0 6px 16px rgba(148,35,109,0.36) !important;
+    color: #fff !important;
+  }
+
+  /* Wizard / primary buttons */
+  .wizardBtns.btn-design .btn-primary,
+  .wizardBtns.btn-design .btn-primary:hover {
+    background: var(--ap-purple) !important;
+    background: var(--ap-purple-gradient) !important;
+    color: #fff !important;
+  }
+
+  /* Custom tabs active */
+  .customTab > div a.nav-item.nav-link.active,
+  .customTab > div a.nav-item.nav-link.active:focus {
+    background: var(--ap-purple) !important;
+    background: var(--ap-purple-gradient) !important;
+    color: #fff !important;
+  }
+
+  /* Sidebar / nav active states */
+  .customSidebar .sidebar-nav > .nav-item:first-child .nav-link.active,
+  .customSidebar .sidebar-nav .nav-link.active,
+  .customSidebar .sidebar-nav .nav-group.show .nav-group-toggle,
+  .customSidebar .sidebar-nav .nav-group.nav-group-active .nav-group-toggle {
+    background: var(--ap-purple) !important;
+    background: var(--ap-purple-gradient) !important;
+    color: #fff !important;
+    border-radius: 30px !important;
+  }
+
+  /* For nav items that use background-clip: text; preserve the effect with purple */
+  .customSidebar .sidebar-nav .nav-link.active {
+    background-image: var(--ap-purple-gradient) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
+  }
+
+  /* Pagination and datatable pager current */
+  .pagination .page-item.active .page-link,
+  .dataTableDesign .dataTables_wrapper .dataTables_paginate .paginate_button.current,
+  .dataTables_wrapper .paginate_button.current {
+    background: var(--ap-purple) !important;
+    background: var(--ap-purple-gradient) !important;
+    color: #fff !important;
+    border-color: transparent !important;
+  }
+
+  /* Accordion / accordion icons that used the blue gradient */
+  .adv-acc-design .accordion-button:not(.collapsed) .acc-icon,
+  .adv-acc-design .accordion-button:not(.collapsed) .acc-icon i {
+    background: var(--ap-purple) !important;
+    background: var(--ap-purple-gradient) !important;
+    color: #fff !important;
+  }
+
+  /* Portal version / small accent text */
+  .portal-version p,
+  .portal-version {
+    color: var(--ap-purple) !important;
+  }
+
+  /* Vertical tabs active indicator */
+  .verticalTabs .nav .nav-item button.active::after,
+  .verticalTabs .nav .nav-item button.active {
+    border-right-color: var(--ap-purple) !important;
+    color: var(--ap-purple) !important;
+  }
+
+  /* Replace other explicit blue-gradient uses found in project */
+  .dashboard-wrapper .welcome-card,
+  .customTab > div a.nav-item.nav-link.active,
+  .tile .tile-icon,
+  .tile .tile-progress .progress-bar {
+    background: var(--ap-purple) !important;
+    background: var(--ap-purple-gradient) !important;
+  }
+
+  /* Ensure form controls on purple backgrounds remain readable */
+  .agreePilotPurpulr .btn,
+  .agreePilotPurpulr .nav-link,
+  .agreePilotPurpulr .badge {
+    color: inherit !important;
+  }
+.btn-login{
+    background: var(--ap-purple) !important;
+    background: var(--ap-purple-gradient) !important;
+    color: #fff !important;
+    border-color: transparent !important;
+  }
+  .chosaeFilebtn input[type="file"]::file-selector-button {
+    background: var(--ap-purple) !important;
+    background: var(--ap-purple-gradient) !important;
+    color: #fff !important;
+    border-color: transparent !important;
+  }
+  .wrapper .sectionHeading h6, .wrapper .sectionHeading .h6{
+    border-left: 4px solid var(--ap-purple) !important; 
+  }
+  .title-add-new-btn button{
+    background: var(--ap-purple) !important;
+    background: var(--ap-purple-gradient) !important;
+    color: #fff !important;
+    border-color: transparent !important;
+  }
+
+  /* Login page - input icon color and focus states */
+  .login-input,
+  .login-input::placeholder {
+    /* keep text color default; placeholder left as-is */
+  }
+
+  .input-icon,
+  .input-icon-wrapper .input-icon {
+    color: var(--ap-purple) !important;
+  }
+
+  /* If icons are images (<img>), apply a filter to tint them to the purple theme.
+     This keeps changes scoped to the `.agreePilotPurpulr` body class and does
+     not require editing the SVG files. */
+  img.input-icon,
+  img.password-toggle-icon {
+    /* Approximate tint to #94236D using CSS filter */
+    -webkit-filter: invert(90%) sepia(100%) saturate(1889%) hue-rotate(285deg) brightness(76%) contrast(92%) !important;
+    filter: invert(90%) sepia(100%) saturate(1889%) hue-rotate(285deg) brightness(76%) contrast(92%) !important;
+    opacity: 1 !important;
+  }
+
+  .password-toggle-icon {
+    color: #999999; /* keep default when not hovered */
+  }
+
+  .password-toggle-icon:hover {
+    color: var(--ap-purple) !important;
+  }
+
+  .login-input:focus {
+    border-color: var(--ap-purple) !important;
+    background-color: #ffffff !important;
+    box-shadow: 0 0 0 3px rgba(148,35,109,0.12) !important;
+    outline: none !important;
+  }
+
+  .forgot-password-link {
+    color: var(--ap-purple) !important;
+  }
+
+  .btn-login {
+    box-shadow: 0 4px 15px rgba(148,35,109,0.28) !important;
+  }
+  .menuHeader{
+    background-image: url(../assets/images/agree-pilot-logo.png) !important;
+  }
+  .AgreePilotlogo{
+    display: block;
+    max-width: 120px;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+  }
+  .logo{
+    display: none !important;
+  }
+  .summary-badge{
+        color: #7b1854 !important;
+  }
+  .customSidebar {
+    .sidebar-toggler{
+        filter: hue-rotate(67deg) !important;
+    }
+  }
+  .chart-card {
+    .chart-header{
+        img{
+            filter: hue-rotate(67deg) !important;
+        }
+    }
+  }
+//   .sidebar-nav{
+//     .custom-icon{
+//         filter: hue-rotate(171deg) !important;
+//     }
+//   }
+.customWizardDesign .wizard-steps li.active::after{
+        color: #831c5c;
+    }
+}
