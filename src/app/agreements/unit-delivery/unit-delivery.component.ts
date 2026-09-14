@@ -85,7 +85,8 @@ export class UnitDelivery implements OnInit, AfterViewInit {
       pageLength: 10,
       processing: true,
       ordering: true,
-      scrollX: true
+      scrollX: true,
+      autoWidth: false,
     };
     this.GetUnitDeliveryList()
     // this.GetLovs();
