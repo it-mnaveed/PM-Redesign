@@ -90,8 +90,8 @@
             <div class="row d-flex justify-content-center align-items-center h-100">
               <div class="col col-lg-12 mb-4 mb-lg-0">
                 <div class="content-section">
-                  <div class="modal-logo">
-                    <img src="../../assets/images/abacus-logo.png" alt="/">
+                  <div class="forgot-modal-logo">
+                    <!-- <img src="../../assets/images/abacus-logo.png" alt="/"> -->
                   </div>
                   <div class="text-area">
                     <p>Password Recovery</p>
@@ -127,8 +127,8 @@
             <div class="row d-flex justify-content-center align-items-center h-100">
               <div class="col col-lg-12 mb-4 mb-lg-0">
                 <div class="content-section">
-                  <div class="modal-logo">
-                    <img src="../../assets/images/fg-logo.png" alt="/">
+                  <div class="forgot-modal-logo">
+                    <!-- <img src="../../assets/images/abacus-logo.png" alt="/"> -->
                   </div>
                   <div class="text-area">
                     <p>Password Recovery</p>
@@ -180,8 +180,8 @@
             <div class="row d-flex justify-content-center align-items-center h-100">
               <div class="col col-lg-12 mb-4 mb-lg-0">
                 <div class="content-section">
-                  <div class="modal-logo">
-                    <img src="../../assets/images/fg-logo.png" alt="/">
+                  <div class="forgot-modal-logo">
+                    <!-- <img src="../../assets/images/abacus-logo.png" alt="/"> -->
                   </div>
                   <div class="text-area">
                     <p>Password Recovery</p>
@@ -200,7 +200,7 @@
                           <!-- Eye Icon -->
                           <i class="fa" [ngClass]="showPasswordConfirm ? 'fa-eye-slash' : 'fa-eye'"
                             (click)="showPasswordConfirm = !showPasswordConfirm"
-                            style="position: absolute; top: 10px;z-index: 9999; right: 10px; cursor: pointer; color: black;"></i>
+                            style="position: absolute; top: 50%; z-index: 9999; right: 10px; cursor: pointer; color: black; transform: translateY(-50%);"></i>
 
                           <div *ngIf="Resetsubmitted && reset['NewPassword'].errors" class="invalid-feedback">
                             <div *ngIf="reset['NewPassword'].errors['required']">New Password is required</div>
@@ -228,7 +228,7 @@
                           <!-- Eye Icon -->
                           <i class="fa" [ngClass]="showConfirmPassword ? 'fa-eye-slash' : 'fa-eye'"
                             (click)="showConfirmPassword = !showConfirmPassword"
-                            style="position: absolute; top: 10px;z-index: 9999; right: 10px; cursor: pointer; color: black;"></i>
+                            style="position: absolute; top: 50%; z-index: 9999; right: 10px; cursor: pointer; color: black; transform: translateY(-50%);"></i>
 
                           <div *ngIf="Resetsubmitted && reset['ConfirmPassword'].errors" class="invalid-feedback">
                             <div *ngIf="reset['ConfirmPassword'].errors['required']">Confirm Password is required</div>

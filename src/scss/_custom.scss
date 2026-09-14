@@ -2637,7 +2637,15 @@ table td.wrap-text {
     border-radius: 30px;
     color: #fff;
 }
-
+.forgot-modal-logo{
+	background-image: url(../assets/images/abacus-logo.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+    height: 100%;
+    min-height: 45px;
+    width: 100%;
+    margin-bottom: 20px;
+}
 
 
 

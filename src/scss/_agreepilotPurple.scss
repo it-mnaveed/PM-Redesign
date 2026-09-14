@@ -294,4 +294,13 @@
         filter: brightness(0) invert(1);
         opacity: 1 !important;
     }
+    .forgot-modal-logo{
+        background-image: url(../assets/images/agree-pilot-logo.png);
+    }
+    .form-control:focus {
+        border-color: var(--ap-purple) !important;
+    }
+    .search-box input + i{
+        color: var(--ap-purple) !important;
+    }
 }
