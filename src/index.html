@@ -48,6 +48,62 @@
   </app-root>
 
   <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
+  <script>
+    (function () {
+      const defaultHref = 'assets/images/favicon.png';
+      const purpleHref = 'assets/images/fav-icon.png';
+      const relSelector = 'link[rel="icon"]';
+
+      function setFavicon(href) {
+        let link = document.querySelector(relSelector);
+        if (!link) {
+          link = document.createElement('link');
+          link.rel = 'icon';
+          document.head.appendChild(link);
+        }
+        // Use full URL assignment to update in all browsers
+        const url = new URL(href, window.location.origin).toString();
+        if (link.href !== url) link.href = url;
+      }
+
+      function isPurpleTheme() {
+        const body = document.body || document.documentElement;
+        if (!body) return false;
+        // common theme class names: agreePilotPurple, theme-purple
+        return (
+          body.classList.contains('agreePilotPurple') ||
+          body.classList.contains('theme-purple') ||
+          /purple/i.test(body.className)
+        );
+      }
+
+      function checkAndApply() {
+        setFavicon(isPurpleTheme() ? purpleHref : defaultHref);
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+          checkAndApply();
+          // observe class changes on body to react to theme toggles
+          const target = document.body;
+          if (target) {
+            const mo = new MutationObserver(() => checkAndApply());
+            mo.observe(target, { attributes: true, attributeFilter: ['class'] });
+          }
+        });
+      } else {
+        checkAndApply();
+        const target = document.body;
+        if (target) {
+          const mo = new MutationObserver(() => checkAndApply());
+          mo.observe(target, { attributes: true, attributeFilter: ['class'] });
+        }
+      }
+
+      // also allow manual triggering from app code
+      window.applyThemeFavicon = checkAndApply;
+    })();
+  </script>
 </body>
 
 </html>
