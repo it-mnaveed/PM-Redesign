@@ -141,7 +141,7 @@ export class NewReportComponent implements OnInit, AfterViewInit {
           this.ReportsList.forEach((element:any) => {
             element.rptURL = this.configService.config['rptURL']+'ReportViewer/CR_Viewer.aspx?ReportName='+element.fileURL
           });
-          debugger;
+          
           this.rerender();
         }
       },

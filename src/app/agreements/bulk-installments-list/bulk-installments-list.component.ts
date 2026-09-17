@@ -156,7 +156,7 @@ export class BulkInstallmentsListComponent implements OnInit, AfterViewInit {
     this.expExcel.exportToExcel(this.BulkInstallmentsList, 'BulkInstallmentsList')
   }
   exportDataDetail() {
-    debugger;
+    
     if (!this.SelectedAgreement || this.SelectedAgreement.length == 0) {
       this.toastr.info("There is no data available to export!", "Info");
       return;

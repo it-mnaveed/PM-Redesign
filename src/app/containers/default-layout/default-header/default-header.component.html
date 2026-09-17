@@ -24,8 +24,8 @@
 
       <div class="d-flex justify-content-end align-items-center lng-btn">
 
-        <!-- Theme toggle (moon/sun) placed immediately left of language dropdown -->
-        <button class="btn theme-toggle me-2 d-flex align-items-center" type="button" (click)="toggleTheme()" aria-label="Toggle theme">
+        <!-- Theme toggle is hidden by default because the purple scheme is the app default. -->
+        <button *ngIf="showThemeToggle" class="btn theme-toggle me-2 d-flex align-items-center" type="button" (click)="toggleTheme()" aria-label="Toggle theme">
           <i [ngClass]="isPurpleTheme ? 'fa-solid fa-sun' : 'fa-regular fa-moon'"></i>
         </button>
 

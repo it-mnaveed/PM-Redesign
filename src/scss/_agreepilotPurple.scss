@@ -7,10 +7,11 @@
 .agreePilotPurple {
 
     /* Purple gradient values */
-    --ap-purple-start: rgba(148, 35, 109, 1);
-    --ap-purple-end: rgba(121, 23, 82, 1);
-    --ap-purple-gradient: linear-gradient(160deg, var(--ap-purple-start) 0%, var(--ap-purple-end) 100%);
-    --ap-purple: #94236D;
+    --ap-purple-start: #791752 22.91%;
+    --ap-purple-end: #FE75C8 100%;
+
+    --ap-purple-gradient: linear-gradient(170deg, var(--ap-purple-start) 0%, var(--ap-purple-end) 100%);
+    --ap-purple: #791752;
     //   font-family: 'Poppins', sans-serif !important;
 
     /* Avatar / small circular icons */
@@ -27,6 +28,7 @@
         box-shadow: 0 10px 30px rgba(148, 35, 109, 0.2) !important;
         color: #fff !important;
     }
+
 
     /* Tile icons and progress bars */
     .tile .tile-icon,
@@ -92,8 +94,34 @@
         background: var(--ap-purple-gradient) !important;
         color: #fff !important;
         border-radius: 30px !important;
-       
     }
+
+    // .customSidebar .sidebar-nav .nav-group.show .nav-group-toggle {
+    //     background: transparent !important;
+    //     color: #686868 !important;
+    // }
+
+    // .customSidebar .sidebar-nav .nav-group.show .nav-group-toggle .nav-icon {
+    //     filter: unset !important;
+    // }
+
+    // .customSidebar .sidebar-nav .nav-group.show .nav-group-toggle::after {
+    //     filter: brightness(0%) !important;
+    // }
+
+    // .agreePilotPurple .customSidebar .sidebar-nav .nav-group.show.nav-group-active .nav-group-toggle {
+    //     background: var(--ap-purple) !important;
+    //     background: var(--ap-purple-gradient) !important;
+    //     color: #fff !important;
+    // }
+
+    // .customSidebar .sidebar-nav .nav-group.nav-group-active > .nav-group-toggle,
+    // .customSidebar .sidebar-nav .nav-group.nav-group-active .nav-group-toggle.active {
+    //     background: var(--ap-purple) !important;
+    //     background: var(--ap-purple-gradient) !important;
+    //     color: #fff !important;
+    // }
+
 
     /* For nav items that use background-clip: text; preserve the effect with purple */
     .customSidebar .sidebar-nav .nav-link.active {
@@ -111,6 +139,7 @@
         background: var(--ap-purple-gradient) !important;
         color: #fff !important;
         border-color: transparent !important;
+        border-bottom: unset !important;
     }
 
     /* Accordion / accordion icons that used the blue gradient */
@@ -174,6 +203,7 @@
         background: var(--ap-purple-gradient) !important;
         color: #fff !important;
         border-color: transparent !important;
+        border-bottom:unset !important;
     }
 
     /* Login page - input icon color and focus states */
@@ -302,5 +332,22 @@
     }
     .search-box input + i{
         color: var(--ap-purple) !important;
+    }
+    .summary-badge  {
+        background: transparent !important;
+            padding: 0 !important;
+        .info-pills{
+        display: inline-block;
+        background: #D455A1;
+        margin-right: 10px;
+        color: #fff;
+        border-radius: 30px;
+        padding: 8px 14px;
+        }
+    }
+    .bellIcon {
+        .countSe{
+                background: linear-gradient(90deg, #791752 0%, #94236D 100%) !important;
+        }
     }
 }

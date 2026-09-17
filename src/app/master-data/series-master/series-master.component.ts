@@ -214,7 +214,7 @@ export class SeriesMasterComponent implements OnInit, AfterViewInit {
     this._service.Get(url).subscribe({
       next: result => {
         if (result.status) {
-          debugger;
+          
           this.AgreementTypeListVlaues = result.data.filter(
             (item: any) => item.field === 'AgreementType'
           );
@@ -232,7 +232,7 @@ export class SeriesMasterComponent implements OnInit, AfterViewInit {
     this._service.Get(url).subscribe({
       next: result => {
         if (result.status) {
-          debugger;
+          
           this.ItemGroupListVlaues = result.data;
           // this.U_ReturnTypeVlaues = result.data.filter((item: any) => item.field === 'ReturnType');
           // this.AttachmentTypeListValues = result.data.filter((item: any) => item.field === 'AttachmentType');

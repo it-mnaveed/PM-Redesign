@@ -140,7 +140,7 @@ export class PropertyStructureListComponent implements OnInit, AfterViewInit {
       next: result => {
         if (result.status) {
           if (id > 0) {
-            debugger;
+            
             this.ProjectDetails = result.data[0];
             ($('#detailModal') as any).modal('show');
             return;
@@ -191,7 +191,7 @@ export class PropertyStructureListComponent implements OnInit, AfterViewInit {
       next: result => {
         if (result.status) {
           if (id > 0) {
-            debugger;
+            
             this.ProjectDetails = result.data;
             let DataForUpdate = {
               data: this.ProjectDetails

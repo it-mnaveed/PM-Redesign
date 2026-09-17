@@ -110,7 +110,7 @@ export class RolesComponent implements OnInit, AfterViewInit {
         }
       },
       error: (err: any) => {
-        debugger;
+        
       },
     });
   }
@@ -121,7 +121,7 @@ export class RolesComponent implements OnInit, AfterViewInit {
         if (result.status) {
 
           this.RolesList = result.data;
-          debugger;
+          
           this.rerender();
         }
       },
@@ -139,7 +139,7 @@ export class RolesComponent implements OnInit, AfterViewInit {
     this.showModal = false;
   }
   Update(data: any) {
-    debugger;
+    
     this.isUpdate = true;
     this.form.controls['Id'].setValue(data['id']);
     this.form.controls['RoleName'].setValue(data['roleName']);

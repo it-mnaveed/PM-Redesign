@@ -173,50 +173,29 @@ export class DashboardChartsData {
     };
   }
 
-  updateFromSummary(summaryData: any[]) {
+  updateFromSummary(summaryData: any[], selectedFilter: string = 'Approved') {
     if (!Array.isArray(summaryData) || !summaryData.length) {
       this.initMainChart();
       return;
     }
 
-    const brandSuccess = getStyle('--cui-success') ?? '#4dbd74';
-    const brandInfo = getStyle('--cui-info') ?? '#20a8d8';
-    const brandDanger = getStyle('--cui-danger') || '#f86c6b';
-    const brandWarning = getStyle('--cui-warning') || '#ffc107';
-    const brandPurple = '#6610f2';
+    const filterMap: { [key: string]: { key: string; label: string; color: string } } = {
+      Approved: { key: 'approved', label: 'Approved', color: getStyle('--cui-success') ?? '#4dbd74' },
+      Pending: { key: 'pending', label: 'Pending', color: getStyle('--cui-warning') || '#ffc107' },
+      Rejected: { key: 'rejected', label: 'Rejected', color: getStyle('--cui-danger') || '#f86c6b' },
+      'Pending Ejar': { key: 'pendingEjar', label: 'Pending Ejar', color: getStyle('--cui-info') ?? '#20a8d8' },
+      'Expire in 3 Month': { key: 'expiringIn3Months', label: 'Expire in 3 Month', color: '#6610f2' }
+    };
 
+    const selected = filterMap[selectedFilter] || filterMap['Approved'];
     const labels = summaryData.map(item => item.agreementType || 'Unknown');
 
     const datasets = [
       {
-        label: 'Approved',
-        backgroundColor: brandSuccess,
+        label: selected.label,
+        backgroundColor: selected.color,
         borderRadius: 10,
-        data: summaryData.map(item => item.approved ?? 0)
-      },
-      {
-        label: 'Pending',
-        backgroundColor: brandWarning,
-        borderRadius: 10,
-        data: summaryData.map(item => item.pending ?? 0)
-      },
-      {
-        label: 'Rejected',
-        backgroundColor: brandDanger,
-        borderRadius: 10,
-        data: summaryData.map(item => item.rejected ?? 0)
-      },
-      {
-        label: 'Pending Ejar',
-        backgroundColor: brandInfo,
-        borderRadius: 10,
-        data: summaryData.map(item => item.pendingEjar ?? 0)
-      },
-      {
-        label: 'Expiring in 3 Months',
-        backgroundColor: brandPurple,
-        borderRadius: 10,
-        data: summaryData.map(item => item.expiringIn3Months ?? 0)
+        data: summaryData.map(item => item[selected.key] ?? 0)
       }
     ];
 

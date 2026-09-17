@@ -4,6 +4,35 @@
       font-size: x-small;
     }
   }
+
+  .overview-filter-button {
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: #edf2ff;
+    }
+  }
+
+  .overview-filter-dropdown {
+    button.active {
+      background: #f3e8ff;
+      color: #6d28d9;
+    }
+
+    button:hover {
+      background: #f8fafc;
+    }
+  }
+
+  .overview-chart-area {
+    .overview-bar {
+      min-height: 18px;
+      display: block;
+      border-radius: 22px;
+      position: relative;
+      overflow: hidden;
+    }
+  }
 }
 
 .dashboard-wrapper {
@@ -301,7 +330,7 @@
 
         .chart-header {
           padding: 0;
-          border-bottom: 1px solid #E5E7EB;
+          // border-bottom: 1px solid #E5E7EB;
           display: flex;
           justify-content: space-between;
           align-items: center;

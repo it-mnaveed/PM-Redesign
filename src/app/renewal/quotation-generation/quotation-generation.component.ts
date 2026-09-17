@@ -367,7 +367,7 @@ export class QuotationGenerationComponent implements OnInit, AfterViewInit {
     const plan = this.SelectedAgreementForUpdate.u_InstPlanID;
 
     this.SelectedAgreementForUpdate.agreementItems.forEach((element: any) => {
-      debugger;
+      
       let instData = {
         U_TotAfterDisc: element.u_TotAfterDisc,
         U_TaxAmt: element.u_TaxAmt,

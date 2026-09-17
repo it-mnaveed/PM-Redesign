@@ -56,14 +56,14 @@ export class SAPConnectionSettingsComponent implements OnInit, AfterViewInit {
     this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
       // Listen for search
       $('#datatable-id').on('search.dt', () => {
-        debugger;
+        
         const value = dtInstance.search();
         console.log('Current search value:', value);
       });
     });
   }
   onDtSearch(e: Event) {
-    debugger;
+    
     const val = (e.target as HTMLInputElement).value;
     console.log('CUSTOM full search value:', val);
     this.dtElement.dtInstance.then(dt => {
@@ -188,7 +188,7 @@ export class SAPConnectionSettingsComponent implements OnInit, AfterViewInit {
     this.showModal = false;
   }
   Update(data: any) {
-    debugger;
+    
     this.isUpdate = true;
     this.form.patchValue({
       Id: data.id,

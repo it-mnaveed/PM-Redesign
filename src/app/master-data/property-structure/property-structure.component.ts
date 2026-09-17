@@ -174,7 +174,7 @@ export class PropertyStructureComponent implements OnInit, AfterViewInit {
         }
       },
       error: (err: any) => {
-        debugger;
+        
       },
     });
   }
@@ -192,7 +192,7 @@ export class PropertyStructureComponent implements OnInit, AfterViewInit {
     });
   }
   Update(data: any) {
-    debugger;
+    
     this.form.patchValue({
       Id: data.id,
       SapUserName: data.sapUserName,
@@ -224,7 +224,7 @@ export class PropertyStructureComponent implements OnInit, AfterViewInit {
   get bl() { return this.buildingForm.controls; }
   nextStep() {
     if (this.currentStep < this.totalSteps) {
-      debugger;
+      
       if (this.currentStep === 1) {
         // Validate projectForm before moving to next step
         this.submitted = true;
@@ -235,7 +235,7 @@ export class PropertyStructureComponent implements OnInit, AfterViewInit {
         this.PostData(this.projectForm.value, '/PropertyStructure/postoprj', 'project', this.currentStep);
       } else if (this.currentStep === 2) {
 
-        debugger;
+        
         // let PostedData = [{
         //   ...this.buildingForm.value,
         //   BuildingFloors: this.BuildingFloorList,
@@ -276,7 +276,7 @@ export class PropertyStructureComponent implements OnInit, AfterViewInit {
         oData: this.SubZoneList,
         ProjectId: this.projectForm.value.Id
       }
-      debugger;
+      
       this.PostData(PostedData, '/PropertyStructure/postosubzon', 'subzone', this.currentStep);
     }
   }
@@ -296,7 +296,7 @@ export class PropertyStructureComponent implements OnInit, AfterViewInit {
           if (result.status) {
 
             if (form === 'project') {
-              debugger;
+              
               //this.projectForm.reset();
               this.projectForm.patchValue({
                 Id: result.data.id,
@@ -335,7 +335,7 @@ export class PropertyStructureComponent implements OnInit, AfterViewInit {
         },
         error: (err: any) => {
           console.error(err);
-          debugger;
+          
           let errorMsg = "An unexpected error occurred";
 
           // Handle API error response
@@ -370,7 +370,7 @@ export class PropertyStructureComponent implements OnInit, AfterViewInit {
     });
   }
   AddRemoveBuildingFloors(action: any, postdata: any) {
-    debugger;
+    
     if (action === 'add') {
       if (!Array.isArray(this.BL_Floor) || this.BL_Floor.length === 0) {
         this.toastr.warning("Please select at least one floor", "Warning");
@@ -379,7 +379,7 @@ export class PropertyStructureComponent implements OnInit, AfterViewInit {
       this.BuildingFloorList = [];
       // Add each selected floor if not already in the list
       this.BL_Floor.forEach((floorCode: any) => {
-        debugger;
+        
         const floorObj = this.FloorsList.find((f: any) => f.code === floorCode);
         if (!floorObj) return;
         const exists = this.BuildingFloorList.some((m: any) => m.code === floorObj.code);
@@ -387,7 +387,7 @@ export class PropertyStructureComponent implements OnInit, AfterViewInit {
           this.BuildingFloorList.push({ U_FlrCode: floorObj.code, Name: floorObj.name });
         }
       });
-      debugger;
+      
       // Optionally clear selection after adding
       this.BL_Floor = [];
     } else {
@@ -410,7 +410,7 @@ export class PropertyStructureComponent implements OnInit, AfterViewInit {
 
   AddRemovePlot(action: string, index: any) {
     if (action === 'add') {
-      debugger;
+      
       if (!this.NewPlot.U_PNo || !this.NewPlot.U_POwner || !this.NewPlot.U_PStatus || !this.NewPlot.U_AQSDate
         || !this.NewPlot.U_AQEDate
       ) {
@@ -460,7 +460,7 @@ export class PropertyStructureComponent implements OnInit, AfterViewInit {
 
 
   AddRemoveZoneFloors(action: any, postdata: any) {
-    debugger;
+    
     if (action === 'add') {
       if (!Array.isArray(this.Zone_BL_Floor) || this.Zone_BL_Floor.length === 0) {
         this.toastr.warning("Please select at least one floor", "Warning");
@@ -469,7 +469,7 @@ export class PropertyStructureComponent implements OnInit, AfterViewInit {
       this.ZoneFloors = [];
       // Add each selected floor if not already in the list
       this.Zone_BL_Floor.forEach((floorCode: any) => {
-        debugger;
+        
         const floorObj = this.FloorsList.find((f: any) => f.code === floorCode);
         if (!floorObj) return;
         const exists = this.ZoneFloors.some((m: any) => m.U_FlrCode === floorObj.code);
@@ -477,7 +477,7 @@ export class PropertyStructureComponent implements OnInit, AfterViewInit {
           this.ZoneFloors.push({ U_FlrCode: floorObj.code, Name: floorObj.name });
         }
       });
-      debugger;
+      
       // Optionally clear selection after adding
       this.Zone_BL_Floor = [];
     } else {
@@ -487,7 +487,7 @@ export class PropertyStructureComponent implements OnInit, AfterViewInit {
   }
   editingZoneIndex: number | null = null;
   AddRemoveZoneOld(action: string, index?: any) {
-    debugger;
+    
     if (action === 'add') {
       if (!this.NewZone.U_Code || !this.NewZone.Name) {
         this.toastr.warning("Please fill in all required fields", "Warning");
@@ -521,7 +521,7 @@ export class PropertyStructureComponent implements OnInit, AfterViewInit {
     }
   }
   AddRemoveZone(action: string, index?: any) {
-    debugger;
+    
 
     if (action === 'add') {
       if (!this.NewZone.U_Code || !this.NewZone.Name) {
@@ -574,7 +574,7 @@ export class PropertyStructureComponent implements OnInit, AfterViewInit {
     }
   }
   editZone(index: number) {
-    debugger;
+    
     const zone = this.ZoneList[index];
 
     // Store index for updating
@@ -607,7 +607,7 @@ export class PropertyStructureComponent implements OnInit, AfterViewInit {
 
   SubZoneList: any[] = [];
   AddRemoveSubZoneFloors(action: any, postdata: any) {
-    debugger;
+    
     if (action === 'add') {
       if (!Array.isArray(this.Sub_Zone_BL_Floor) || this.Sub_Zone_BL_Floor.length === 0) {
         this.toastr.warning("Please select at least one floor", "Warning");
@@ -616,7 +616,7 @@ export class PropertyStructureComponent implements OnInit, AfterViewInit {
       this.SubZoneSecFloors = [];
       // Add each selected floor if not already in the list
       this.Sub_Zone_BL_Floor.forEach((floorCode: any) => {
-        debugger;
+        
         const floorObj = this.FloorsList.find((f: any) => f.code === floorCode);
         if (!floorObj) return;
         const exists = this.SubZoneSecFloors.some((m: any) => m.U_FlrCode === floorObj.code);
@@ -624,7 +624,7 @@ export class PropertyStructureComponent implements OnInit, AfterViewInit {
           this.SubZoneSecFloors.push({ U_FlrCode: floorObj.code, Name: floorObj.name });
         }
       });
-      debugger;
+      
       // Optionally clear selection after adding
       this.Sub_Zone_BL_Floor = [];
     } else {
@@ -634,7 +634,7 @@ export class PropertyStructureComponent implements OnInit, AfterViewInit {
   }
 
   AddRemoveSubZoneOld(action: string, index?: number) {
-    debugger;
+    
     if (action === 'add') {
       if (!this.NewSubZone.U_Code || !this.NewSubZone.Name) {
         this.toastr.warning("Please fill in all required fields", "Warning");
@@ -669,7 +669,7 @@ export class PropertyStructureComponent implements OnInit, AfterViewInit {
   }
   editingSubZoneIndex: number | null = null;
   AddRemoveSubZone(action: string, index?: number) {
-    debugger;
+    
 
     if (action === 'add') {
 
@@ -725,7 +725,7 @@ export class PropertyStructureComponent implements OnInit, AfterViewInit {
   }
 
   editSubZone(index: number) {
-    debugger;
+    
     const subZone = this.SubZoneList[index];
 
     // Store index so AddRemoveSubZone knows it is UPDATE mode
@@ -771,7 +771,7 @@ export class PropertyStructureComponent implements OnInit, AfterViewInit {
   }
   editingBuildingIndex: number | null = null;
   AddRemoveBuildingsOld(action: string, index?: number) {
-    debugger;
+    
 
     if (action === 'add') {
       this.BLsubmitted = true;
@@ -877,7 +877,7 @@ export class PropertyStructureComponent implements OnInit, AfterViewInit {
   }
 
   AddRemoveBuildings(action: string, index?: number) {
-    debugger;
+    
 
     if (action === 'add') {
 
@@ -950,7 +950,7 @@ export class PropertyStructureComponent implements OnInit, AfterViewInit {
 
 
   ShowBuildingDetail(data: any) {
-    debugger;
+    
     this.selectedBuildingForDeteal = data;
     ($('#buildingDetailModal') as any).modal('show');
   }
@@ -968,16 +968,16 @@ export class PropertyStructureComponent implements OnInit, AfterViewInit {
     return obj; // primitive value
   }
   onDropDownChange(data: any, form: any) {
-    debugger;
+    
     if (form == 'ZoneBuilding') {
-      debugger;
+      
       let exist = this.PostedBuildingsInDBList.find((m: any) => m.id == data);
       if (exist) {
         this.SelectedBuildingFloors = exist.buildingFloors;
       }
     }
     if (form === 'SubZone_Zone') {
-      debugger;
+      
       let exist = this.PostedZoneList.find((m: any) => m.id == data);
       if (exist) {
         
@@ -986,7 +986,7 @@ export class PropertyStructureComponent implements OnInit, AfterViewInit {
     }
   }
   loadProjectForEdit(project: any) {
-    debugger;
+    
     // 1️⃣ Fill Project form
     this.projectForm.patchValue({
       Id: project.id,
@@ -1035,7 +1035,7 @@ export class PropertyStructureComponent implements OnInit, AfterViewInit {
         U_Dimen4: bld.u_Dimen4,
         U_Dimen5: bld.u_Dimen5,
       };
-      debugger;
+      
       this.PostedBuildingList.push(buildingData);
     });
 
@@ -1044,7 +1044,7 @@ export class PropertyStructureComponent implements OnInit, AfterViewInit {
     this.PostedZoneList = [];
     (project.buildings || []).forEach((b: any) => {
       (b.zones || []).forEach((z: any) => {
-        debugger;
+        
         this.onDropDownChange(b.id, 'ZoneBuilding')
         const zoneData = {
           Id: z.id,
@@ -1069,15 +1069,15 @@ export class PropertyStructureComponent implements OnInit, AfterViewInit {
         this.PostedZoneList.push(zoneData);
       });
     });
-    debugger;
+    
     // 4️⃣ Map SubZones
     this.SubZoneList = [];
     (project.buildings || []).forEach((b: any) => {
-      debugger;
+      
       (b.zones || []).forEach((z: any) => {
-        debugger;
+        
         (z.subSectionofZone || []).forEach((sz: any) => {
-          debugger;
+          
           this.onDropDownChange(z.id, 'SubZone_Zone')
           const subZoneData = {
             Id: sz.id,

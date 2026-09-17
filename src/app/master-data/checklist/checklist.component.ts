@@ -149,7 +149,7 @@ export class ChecklistComponent implements OnInit {
         }
       },
       error: (err: any) => {
-        debugger;
+        
       },
     });
   }
@@ -181,7 +181,7 @@ export class ChecklistComponent implements OnInit {
     });
   }
   Update(data: any) {
-    debugger;
+    
     this.isUpdate = true;
     this.form.patchValue({
       id: data['id'],

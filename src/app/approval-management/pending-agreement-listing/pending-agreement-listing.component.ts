@@ -139,7 +139,7 @@ export class PendingAgreementListingComponent implements OnInit, AfterViewInit {
       next: result => {
         if (result.status) {
           if (Id > 0) {
-            debugger;
+            
             this.SelectedAgreement = result.data[0];
             for (let i = 0; i < this.SelectedAgreement.agreementAttachments.length; i++) {
               if (this.SelectedAgreement.agreementAttachments[i].u_AttName) {
@@ -160,7 +160,7 @@ export class PendingAgreementListingComponent implements OnInit, AfterViewInit {
               createdDate: x.createdDate ? new Date(x.createdDate) : null
             };
           });
-          debugger;
+          
           this.rerender();
         }
       },
@@ -184,7 +184,7 @@ export class PendingAgreementListingComponent implements OnInit, AfterViewInit {
     });
   }
   GetPendingDocuments(Id: any) {
-    debugger;
+    
     let UserId = parseInt(this.CurrentUserInfo.Id);
     let url = '/DocumentApproval/getPendingDocuments?userid=' + UserId;
 
@@ -240,7 +240,7 @@ export class PendingAgreementListingComponent implements OnInit, AfterViewInit {
     this.router.navigate(['/agreements/sale-agreement'], { state: { forward } });
   }
   GetDocumentDetail(docType: any, DocId: any) {
-    debugger;
+    
     if (docType == 'Agreement') {
       this.GetAgreementList(DocId);
     } else if (docType == 'Proforma Invoice') {
@@ -262,7 +262,7 @@ export class PendingAgreementListingComponent implements OnInit, AfterViewInit {
     this._service.Get(url).subscribe({
       next: result => {
         if (result.status) {
-          debugger;
+          
           if (Id > 0) {
             this.SelectedAgreement = result.data[0];
             if (this.SelectedAgreement.attachements) {
@@ -337,7 +337,7 @@ export class PendingAgreementListingComponent implements OnInit, AfterViewInit {
         if (result.status) {
           if (Id > 0) {
             this.SelectedAgreement = result.data[0];
-            debugger;
+            
             if (this.SelectedAgreement.attachements) {
               for (let i = 0; i < this.SelectedAgreement.attachements.length; i++) {
                 if (this.SelectedAgreement.attachements[i].u_Path) {
@@ -379,7 +379,7 @@ debugger
           debugger
           if (Id > 0) {
             this.SelectedAgreementsup = result.data[0];
-            debugger;
+            
             if (this.SelectedAgreementsup.attachments) {
               for (let i = 0; i < this.SelectedAgreementsup.attachments.length; i++) {
                 if (this.SelectedAgreementsup.attachments[i].filePath) {

@@ -77,7 +77,7 @@ export class ParentPermissionsComponent implements OnInit, AfterViewInit {
   }
   get f() { return this.form.controls; }
   onSubmit() {
-    debugger;
+    
     this.submitted = true;
     if (this.form.invalid) {
       return;
@@ -106,7 +106,7 @@ export class ParentPermissionsComponent implements OnInit, AfterViewInit {
         }
       },
       error: (err: any) => {
-        debugger;
+        
       },
     });
   }
@@ -134,7 +134,7 @@ export class ParentPermissionsComponent implements OnInit, AfterViewInit {
     this.form.reset({ Id: 0, Title: '', Sorting: null, Icon: '', Url: '' });
   }
   Update(data: any) {
-    debugger;
+    
     this.isUpdate = true;
     this.form.controls['Id'].setValue(data['id']);
     this.form.controls['Title'].setValue(data['title']);

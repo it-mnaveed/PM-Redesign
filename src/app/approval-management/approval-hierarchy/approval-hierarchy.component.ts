@@ -229,7 +229,7 @@ export class ApprovalHierarchyComponent implements OnInit, AfterViewInit {
       return;
     }
 
-    debugger;
+    
     const newStage = {
       id: this.md_id || 0,
       docType: this.md_DocumentType,
@@ -300,7 +300,7 @@ export class ApprovalHierarchyComponent implements OnInit, AfterViewInit {
     return stage ? stage.stageName : '';
   }
   editTemplate(stage: any, index: number) {
-    debugger;
+    
     this.md_id = stage.id;
     this.md_DocumentType = stage.docType;
     this.md_DocumentSubType = stage.subType;

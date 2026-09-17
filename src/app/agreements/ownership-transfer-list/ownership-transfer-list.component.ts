@@ -100,7 +100,7 @@ export class ownershiptransferlistComponent implements OnInit, AfterViewInit {
         if (result.status) {
           if (Id > 0) {
             this.SelectedAgreement = result.data[0];
-            debugger;
+            
             if (this.SelectedAgreement.attachements) {
               for (let i = 0; i < this.SelectedAgreement.attachements.length; i++) {
                 if (this.SelectedAgreement.attachements[i].u_Path) {

@@ -162,7 +162,7 @@ export class UnitDeliveryNewComponent implements OnInit, AfterViewInit {
 
   get f() { return this.form.controls; }
   onSubmit() {
-    debugger;
+    
     this.submitted = true;
     if (this.form.invalid) {
       return;
@@ -172,7 +172,7 @@ export class UnitDeliveryNewComponent implements OnInit, AfterViewInit {
     payload.U_DocNum = String(payload.U_DocNum ?? '')
     payload.U_Seri = String(payload.U_Seri ?? '')
 
-    debugger;
+    
 
     const items = this.SelectedAgreement.agreementItems.filter((unit: any) => unit.isSelected);
     if (items.length == 0) {
@@ -262,7 +262,7 @@ export class UnitDeliveryNewComponent implements OnInit, AfterViewInit {
     this._service.Get(url).subscribe({
       next: result => {
         if (result.status) {
-          debugger;
+          
           if (Id > 0) {
             if (result.data.length > 0) {
               this.SelectedAgreement = result.data[0];
@@ -383,7 +383,7 @@ export class UnitDeliveryNewComponent implements OnInit, AfterViewInit {
       }
     }
     if (DDType === 'Series') {
-      debugger;
+      
       let exist = this.SeriesList.find((m: any) => m.id == data);
       if (exist) {
         this.form.controls['U_DocNum'].setValue(exist.u_SNext)
@@ -429,7 +429,7 @@ export class UnitDeliveryNewComponent implements OnInit, AfterViewInit {
     this._service.Get(url).subscribe({
       next: result => {
         if (result.status) {
-          debugger;
+          
           // this.AgreementTypeListVlaues = result.data.filter(
           //   (item: any) => item.field === 'AgreementType' && item.fieldValue != 3
           // );
@@ -443,7 +443,7 @@ export class UnitDeliveryNewComponent implements OnInit, AfterViewInit {
 
   onDropDownChange(data: any, form: any) {
     if (form === 'AgreementType') {
-      debugger;
+      
       this.AgreementList = [];
       this.form.patchValue({
         U_Seri: null,
@@ -476,7 +476,7 @@ export class UnitDeliveryNewComponent implements OnInit, AfterViewInit {
   // Triggered when header checkbox changes
   toggleAll(type: any = '') {
     if (type) {
-      debugger;
+      
       this.SelectUnitForCheckList.checkListMaster.forEach((r: any) => r.isSelected = this.SelectUnitForCheckList.SusmasterSelected);
     } else {
       this.SelectedAgreement.agreementItems.forEach((r: any) => r.isSelected = this.masterSelected);
@@ -488,7 +488,7 @@ export class UnitDeliveryNewComponent implements OnInit, AfterViewInit {
     this.masterSelected = this.SelectedAgreement.agreementItems.every((r: any) => r.isSelected);
   }
   AddCheckListMaster(SelectedUnit: any) {
-    debugger;
+    
     this.SelectUnitForCheckList = SelectedUnit;
     this.SelectUnitForCheckList.SusmasterSelected = this.SelectUnitForCheckList.SusmasterSelected;
     ($('#CheckListMasterModal') as any).modal('show');

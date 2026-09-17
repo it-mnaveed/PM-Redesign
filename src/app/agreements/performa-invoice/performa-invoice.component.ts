@@ -161,7 +161,7 @@ export class PerformaInvoiceComponent implements OnInit, AfterViewInit {
     if (this.form.invalid) {
       return;
     }
-    debugger;
+    
     this.loading = true;
     const payload = { ...this.form.value };
     payload.U_AGID = String(payload.U_AGID ?? '');
@@ -193,7 +193,7 @@ export class PerformaInvoiceComponent implements OnInit, AfterViewInit {
         }
       },
       error: (err: any) => {
-        debugger;
+        
       },
     });
   }
@@ -225,7 +225,7 @@ export class PerformaInvoiceComponent implements OnInit, AfterViewInit {
     });
   }
   Update(data: any) {
-    debugger;
+    
     this.form.patchValue({
       Id: data.id,
       SapUserName: data.sapUserName,
@@ -251,7 +251,7 @@ export class PerformaInvoiceComponent implements OnInit, AfterViewInit {
     this._service.Get(url).subscribe({
       next: result => {
         if (result.status) {
-          debugger;
+          
 
           //  this.AgreementList = result.data.filter((item: any) => item.u_AGStatus === 3);
           this.AgreementList = result.data.filter((item: any) =>

@@ -73,7 +73,7 @@ export class FloorComponent implements OnInit {
   }
     get f() { return this.form.controls; }
     onSubmit() {
-      debugger;
+      
       this.submitted = true;
       if (this.form.invalid) {
         return;
@@ -121,7 +121,7 @@ export class FloorComponent implements OnInit {
           }
         },
         error: (err: any) => {
-          debugger;
+          
         },
       });
     }
@@ -160,7 +160,7 @@ export class FloorComponent implements OnInit {
       });
     }
     Update(data: any) {
-      debugger;
+      
       this.isUpdate = true;
       this.form.patchValue({
         id: data['id'],

@@ -198,7 +198,7 @@ export class unitreturnComponent implements OnInit, AfterViewInit, OnChanges {
 
   get f() { return this.form.controls; }
   onSubmit() {
-    debugger;
+    
     this.submitted = true;
     if (this.form.invalid) {
       return;
@@ -214,7 +214,7 @@ export class unitreturnComponent implements OnInit, AfterViewInit, OnChanges {
     payload.u_InstAmtCalc = 0
     payload.u_InstAmtAdj = 0.
     payload.u_DmgDeductAmt = parseInt(payload.u_DmgDeductAmt)
-    debugger;
+    
     if (payload.u_DmgDeductAmt > payload.u_SecAmt) {
       this.toastr.warning("Damage Deduction Less than  Security!", "Required", {
         progressBar: true,
@@ -437,7 +437,7 @@ export class unitreturnComponent implements OnInit, AfterViewInit, OnChanges {
       }
     }
     if (DDType === 'Series') {
-      debugger;
+      
       let exist = this.SeriesList.find((m: any) => m.id == data);
       if (exist) {
         this.form.controls['U_DocNum'].setValue(exist.u_SNext)
@@ -484,7 +484,7 @@ export class unitreturnComponent implements OnInit, AfterViewInit, OnChanges {
     this._service.Get(url).subscribe({
       next: result => {
         if (result.status) {
-          debugger;
+          
           // this.AgreementTypeListVlaues = result.data.filter(
           //   (item: any) => item.field === 'AgreementType' && item.fieldValue != 3
           // );
@@ -548,7 +548,7 @@ export class unitreturnComponent implements OnInit, AfterViewInit, OnChanges {
   // Triggered when header checkbox changes
   toggleAll(type: any = '') {
     if (type) {
-      debugger;
+      
       this.SelectUnitForCheckList.checkListMaster.forEach((r: any) => r.isSelected = this.SelectUnitForCheckList.SusmasterSelected);
     } else {
       this.SelectedAgreement.agreementItems.forEach((r: any) => r.isSelected = this.masterSelected);
@@ -560,7 +560,7 @@ export class unitreturnComponent implements OnInit, AfterViewInit, OnChanges {
     this.masterSelected = this.SelectedAgreement.agreementItems.every((r: any) => r.isSelected);
   }
   AddCheckListMaster(SelectedUnit: any) {
-    debugger;
+    
     this.SelectUnitForCheckList = SelectedUnit;
     this.SelectUnitForCheckList.SusmasterSelected = this.SelectUnitForCheckList.SusmasterSelected;
     ($('#CheckListMasterModal') as any).modal('show');

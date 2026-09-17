@@ -25,7 +25,8 @@ export class DefaultHeaderComponent extends HeaderComponent implements OnInit {
   public newTasks = new Array(5)
   public newNotifications = new Array(5)
   CUrrentDate: string = '';
-  isPurpleTheme: boolean = false;
+  isPurpleTheme: boolean = true;
+  showThemeToggle: boolean = false;
   currentUserInfo: any | { Id: number; UserCode: string; FullName: string; RoleName: string; RoleID: number; UserImage: string; };
   UserFullName: any;
   UserType: any;
@@ -56,9 +57,14 @@ export class DefaultHeaderComponent extends HeaderComponent implements OnInit {
     this.switchLang('')
     this.GetPendingDocuments("");
 
-    // Initialize theme state based on body class (supports both spellings)
+    // Default to purple on app startup and keep compatibility with both spellings.
     const body = document.body;
-    this.isPurpleTheme = body.classList.contains('agreePilotPurpulr') || body.classList.contains('agreePilotPurple');
+    const classA = 'agreePilotPurpulr';
+    const classB = 'agreePilotPurple';
+
+    body.classList.remove(classA);
+    body.classList.add(classB);
+    this.isPurpleTheme = true;
   }
 
   toggleTheme() {
@@ -120,7 +126,7 @@ export class DefaultHeaderComponent extends HeaderComponent implements OnInit {
     }, 50);
   }
   GetPendingDocuments(Id: any) {
-    debugger;
+    
     let UserId = parseInt(this.currentUserInfo.Id);
     let url = '/DocumentApproval/getPendingDocuments?userid=' + UserId;
 

@@ -192,7 +192,7 @@ export class UnitDelivery implements OnInit, AfterViewInit {
     });
   }
   onDropDownChange(data: 0) {
-    debugger;
+    
     this.GetFilterUnitDeliveryByAgreementType(data);
   }
 

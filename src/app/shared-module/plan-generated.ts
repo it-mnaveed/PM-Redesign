@@ -87,7 +87,7 @@ export function GenerateInstallmentsFromAgreement(
 
     // ---------- ANNUALLY ----------
     if (plan === 'Annually') {
-        debugger;
+        
         const totalMonths = monthDiff(startDate, endDate);
         const fullYears = Math.floor(totalMonths / 12);
         const remainder = totalMonths % 12;
@@ -300,7 +300,7 @@ function finalize(
         const amtRemainder = totalBeforeTax - baseAmt * num;
         const baseTax = Math.floor(totalTaxAmount / num);
         const taxRemainder = totalTaxAmount - baseTax * num;
-        debugger;
+        
         if (!planOverride) {
             installments.forEach(inst => {
                 inst.u_AmtBeforeTax = baseAmt;
@@ -329,7 +329,7 @@ function finalize(
         });
     }
     if (!isMaintenance && plan == 'Month Days') {
-        debugger;
+        
         // Only apply equal distribution for non-MonthDays
         let totalPct = 0;
         for (let i = 0; i < num - 1; i++) totalPct += installments[i].u_PrcUnit;
@@ -398,7 +398,7 @@ function finalize(
 
 
     });
-    debugger;
+    
     const totalAfterTax = (isMaintenance ? 0 : totalBeforeTax + totalTaxAmount) + allUtilities.reduce((sum, u) => sum + Math.round(Number(u.u_TotAfterTax) || 0), 0);
 
     const roundedSum = installments.reduce((sum, i) => sum + i.u_AmtAfterTax, 0);

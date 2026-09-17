@@ -74,7 +74,7 @@ export class FacingComponent implements OnInit, AfterViewInit, OnDestroy {
   }
   get f() { return this.form.controls; }
   onSubmit() {
-    debugger;
+    
     this.submitted = true;
     if (this.form.invalid) {
       return;
@@ -122,7 +122,7 @@ export class FacingComponent implements OnInit, AfterViewInit, OnDestroy {
         }
       },
       error: (err: any) => {
-        debugger;
+        
       },
     });
   }
@@ -154,7 +154,7 @@ export class FacingComponent implements OnInit, AfterViewInit, OnDestroy {
     });
   }
   Update(data: any) {
-    debugger;
+    
     this.isUpdate = true;
     this.form.patchValue({
       id: data['id'],

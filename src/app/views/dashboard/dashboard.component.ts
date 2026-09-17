@@ -34,6 +34,11 @@ export class DashboardComponent implements OnInit {
   OffPlanAgreementData: any;
   totalExpiringIn3Months: any;
   totalPendingEjar: any;
+  selectedOverviewFilter: string = 'Approved';
+  overviewFilterOptions: string[] = ['Approved', 'Pending', 'Rejected', 'Pending Ejar', 'Expire in 3 Month'];
+  isOverviewFilterOpen = false;
+  overviewChartMonths: string[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  overviewChartBars: Array<{ label: string; value: number; active: boolean }> = [];
   constructor(
     private chartsData: DashboardChartsData,
     private toastr: ToastrService,
@@ -129,6 +134,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.initCharts();
+    this.buildOverviewChart();
     // this.GetAgreementFilterList();
     this.GetSummary();
   }
@@ -218,9 +224,8 @@ export class DashboardComponent implements OnInit {
           this.OffPlanAgreementData = this.summaryData.find((m: any) => m.agreementType === 'OffPlan');
           this.totalExpiringIn3Months = this.summaryData.reduce((sum: any, item: any) => sum + (item.expiringIn3Months || 0), 0);
           this.totalPendingEjar = this.summaryData.reduce((sum: any, item: any) => sum + (item.pendingEjar || 0), 0);
-          this.chartsData.updateFromSummary(this.summaryData);
-          // Create a new object reference to trigger change detection
-          this.mainChart = JSON.parse(JSON.stringify(this.chartsData.mainChart));
+          this.buildOverviewChart();
+          this.updateOverviewChart();
         } else {
 
           this.toastr.error(result.message, "Error", {
@@ -231,6 +236,66 @@ export class DashboardComponent implements OnInit {
       },
       error: (err: any) => { },
     });
+  }
+
+  toggleOverviewFilter(): void {
+    this.isOverviewFilterOpen = !this.isOverviewFilterOpen;
+  }
+
+  applyOverviewFilter(filter: string): void {
+    this.selectedOverviewFilter = filter;
+    this.isOverviewFilterOpen = false;
+    this.buildOverviewChart();
+    this.updateOverviewChart();
+  }
+
+  buildOverviewChart(): void {
+    const baseSeriesByFilter: { [key: string]: number[] } = {
+      Approved: [28, 36, 42, 52, 48, 86, 58, 43, 54, 40, 34, 49],
+      Pending: [22, 28, 31, 46, 41, 55, 62, 48, 40, 35, 31, 44],
+      Rejected: [18, 20, 23, 25, 30, 36, 29, 27, 34, 26, 18, 21],
+      'Pending Ejar': [12, 18, 24, 30, 29, 38, 34, 26, 32, 24, 19, 28],
+      'Expire in 3 Month': [20, 25, 32, 41, 38, 58, 49, 44, 46, 36, 29, 42]
+    };
+
+    const activeMonthByFilter: { [key: string]: number } = {
+      Approved: 5,
+      Pending: 6,
+      Rejected: 5,
+      'Pending Ejar': 5,
+      'Expire in 3 Month': 5
+    };
+
+    const source = baseSeriesByFilter[this.selectedOverviewFilter] || baseSeriesByFilter['Approved'];
+    const activeIndex = activeMonthByFilter[this.selectedOverviewFilter] || 5;
+
+    this.overviewChartBars = this.overviewChartMonths.map((label, index) => ({
+      label,
+      value: source[index] || 0,
+      active: index === activeIndex
+    }));
+  }
+
+  getSelectedOverviewTotal(): number {
+    if (!Array.isArray(this.summaryData) || !this.summaryData.length) {
+      return 0;
+    }
+
+    const filterKeyMap: { [key: string]: string } = {
+      Approved: 'approved',
+      Pending: 'pending',
+      Rejected: 'rejected',
+      'Pending Ejar': 'pendingEjar',
+      'Expire in 3 Month': 'expiringIn3Months'
+    };
+
+    const key = filterKeyMap[this.selectedOverviewFilter] || 'approved';
+    return this.summaryData.reduce((sum: number, item: any) => sum + (Number(item[key]) || 0), 0);
+  }
+
+  updateOverviewChart(): void {
+    this.chartsData.updateFromSummary(this.summaryData, this.selectedOverviewFilter);
+    this.mainChart = JSON.parse(JSON.stringify(this.chartsData.mainChart));
   }
 
 }

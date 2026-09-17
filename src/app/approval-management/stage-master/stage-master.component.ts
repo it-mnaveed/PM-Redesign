@@ -150,7 +150,7 @@ export class StageMasterComponent implements OnInit, AfterViewInit {
     return this.form.get('StageDetail') as FormArray;
   }
   onSubmit() {
-    debugger;
+    
     this.submitted = true;
     if (this.form.invalid) return;
 
@@ -267,7 +267,7 @@ export class StageMasterComponent implements OnInit, AfterViewInit {
       CreatedDate: stage.createdDate,
       UpdatedDate: new Date()
     });
-    debugger;
+    
     // Rebuild StageDetail FormArray
     if (stage.stageDetail && stage.stageDetail.length > 0) {
       // Normalize incoming detail items to expected shape { userId, userName }

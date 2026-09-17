@@ -91,7 +91,7 @@ export class UsersComponent implements OnInit, AfterViewInit {
   }
   get f() { return this.form.controls; }
   onSubmit() {
-    debugger;
+    
     this.submitted = true;
     if (this.form.invalid) {
       console.log("Error", this.form.value);
@@ -110,7 +110,7 @@ export class UsersComponent implements OnInit, AfterViewInit {
 
     this._service.Post(this.form.value, url).subscribe({
       next: (result: any) => {
-        debugger;
+        
         if (result.status) {
           this.clearForm();
           this.closeModal();
@@ -127,7 +127,7 @@ export class UsersComponent implements OnInit, AfterViewInit {
         }
       },
       error: (err: any) => {
-        debugger;
+        
       },
     });
   }
@@ -151,7 +151,7 @@ export class UsersComponent implements OnInit, AfterViewInit {
         if (result.status) {
           this.UsersList = result.data;
           for (let i = 0; i < this.UsersList.length; i++) {
-            debugger;
+            
             if (this.UsersList[i].image) {
               debugger
               this.UsersList[i].smallImage = this.configService.config.baseUrl + this.UsersList[i].image;
@@ -199,7 +199,7 @@ export class UsersComponent implements OnInit, AfterViewInit {
 
   async onFileChange(event: any, fileInputRef: HTMLInputElement) {
     const base64: any = await this._sharedHelper.preview(event.target.files, 'image');
-    debugger;
+    
     if (base64) {
       this.form.controls['Image'].setValue(base64);
       this.FileURL = base64; // Optional: For <img [src]="previewImage">
@@ -209,7 +209,7 @@ export class UsersComponent implements OnInit, AfterViewInit {
     }
   }
   Update(data: any) {
-    debugger;
+    
     this.isUpdate = true;
     this.form.controls['Id'].setValue(data['id']);
     this.form.controls['FirstName'].setValue(data['firstName']);

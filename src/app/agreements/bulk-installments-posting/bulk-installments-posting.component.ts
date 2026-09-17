@@ -124,7 +124,7 @@ export class BulkInstallmentsComponent implements OnInit, AfterViewInit {
     this.submitted = true;
 
     if (this.Searchform.invalid) return;
-    debugger;
+    
     let data = this.Searchform.value;
     this.BPF_code = data.FromCustomer;
     this.BPT_code = data.ToCustomer;
@@ -387,7 +387,7 @@ export class BulkInstallmentsComponent implements OnInit, AfterViewInit {
       .map((item: any) => item.agrItemId);
   }
   exportDataDetail() {
-    debugger;
+    
     if (!this.renualItemList || this.renualItemList.length == 0) {
       this.toastr.info("There is no data available to export!", "Info");
       return;

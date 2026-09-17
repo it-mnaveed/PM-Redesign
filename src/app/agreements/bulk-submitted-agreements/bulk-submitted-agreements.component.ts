@@ -121,7 +121,7 @@ export class BulkSubmittedAgreementsComponent implements OnInit, AfterViewInit {
       next: result => {
         if (result.status) {
           if (Id > 0) {
-            debugger;
+            
             this.SelectedAgreement = result.data[0];
             for (let i = 0; i < this.SelectedAgreement.agreementAttachments.length; i++) {
               if (this.SelectedAgreement.agreementAttachments[i].u_AttName) {
@@ -130,7 +130,7 @@ export class BulkSubmittedAgreementsComponent implements OnInit, AfterViewInit {
               }
             }
             if (this.SelectedAgreement.approvalStatus == 'Approved') {
-              debugger;
+              
               if (this.AgreementActionsPermissions.quotation) {
                 this.SelectedAgreement.quotationPermission = true;
               }
@@ -195,7 +195,7 @@ export class BulkSubmittedAgreementsComponent implements OnInit, AfterViewInit {
             return new Date(b.createdDate).getTime() - new Date(a.createdDate).getTime();
           });
 
-          debugger;
+          
           this.rerender();
         } else {
 
@@ -289,7 +289,7 @@ export class BulkSubmittedAgreementsComponent implements OnInit, AfterViewInit {
     this.selectAll = this.AgreementList.every((item: any) => item.isSelected);
   }
   exportDataDetail() {
-    debugger;
+    
     if (!this.AgreementList || this.AgreementList.length == 0) {
       this.toastr.info("There is no data available to export!", "Info");
       return;

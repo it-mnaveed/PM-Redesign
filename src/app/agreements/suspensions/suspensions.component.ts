@@ -336,7 +336,7 @@ export class SuspensionsComponent implements OnInit, AfterViewInit, OnDestroy, O
       const sub = this._service.Get(url).subscribe({
         next: result => {
           if (result.status) {
-            debugger;
+            
             // this.AgreementTypeListVlaues = result.data.filter((item: any) => item.field === 'AgreementType');
             this.U_FltChrgListVlaues = result.data.filter((item: any) => item.field === 'FaultCharges');
           } else {
@@ -390,7 +390,7 @@ export class SuspensionsComponent implements OnInit, AfterViewInit, OnDestroy, O
   async Update(res: any) {
     // Patch form
     // this.onDropdownChange(res.u_AGID, 'Agreements')
-    debugger;
+    
     this.SeriesName = res.u_SeriesName;
     this.form.patchValue({
       Id: res.id,

@@ -164,7 +164,7 @@ export class InstallmentGeneratorService {
     }
 
     const installmentPct = +(100 / installmentDates.length).toFixed(2);
-    debugger;
+    
     let oneTimeUtility =
       unitData.AgreementUtilities
         .filter((u: any) => u.u_Occurance === 'One Time' || u.u_Occurance === 'OT')
@@ -234,7 +234,7 @@ export class InstallmentGeneratorService {
 
       installmentsArray.push(group);
     });
-    debugger;
+    
     return installmentsArray;
   }
 
@@ -254,7 +254,7 @@ export class InstallmentGeneratorService {
     CurrentInstallments: any,
     UnitData: any
   ) {
-    debugger;
+    
     UnitData.forEach((unitData: any) => {
       const BeforetaxAmount = Number(unitData.U_TotAfterDisc) || 0;
       const taxAmount = Number(unitData.U_TaxAmt) || 0;

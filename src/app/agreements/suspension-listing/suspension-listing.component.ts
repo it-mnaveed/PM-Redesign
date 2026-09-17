@@ -134,7 +134,7 @@ export class SuspensionListingComponent implements OnInit, AfterViewInit {
           if (Id > 0) {
             this.SelectedAgreement = result.data[0];
             console.log(JSON.stringify(this.SelectedAgreement))
-            debugger;
+            
             this.SelectedAgreement.u_FltChrgName = this.getFaultChargeName(this.SelectedAgreement.u_FltChrg);
             this.SelectedAgreement.u_taxCodeName = this.getTaxCodeName(this.SelectedAgreement.u_TaxCode);
 
@@ -247,7 +247,7 @@ export class SuspensionListingComponent implements OnInit, AfterViewInit {
     return this.U_FltChrgListVlaues.find((x: any) => x.fieldValue == id)?.fieldName || '-';
   }
   getTaxCodeName(id: any): string {
-    debugger;
+    
     return this.TaxCodesList.find((x: any) => x.code == id)?.name || '-';
   }
   onDropDownChange(data: 0) {

@@ -82,7 +82,7 @@ export class PermissionsComponent implements OnInit, AfterViewInit {
   }
   get f() { return this.form.controls; }
   onSubmit() {
-    debugger;
+    
     this.submitted = true;
     if (this.form.invalid) {
       return;
@@ -111,7 +111,7 @@ export class PermissionsComponent implements OnInit, AfterViewInit {
         }
       },
       error: (err: any) => {
-        debugger;
+        
       },
     });
   }
@@ -163,7 +163,7 @@ export class PermissionsComponent implements OnInit, AfterViewInit {
     });
   }
   Update(data: any) {
-    debugger;
+    
     this.isUpdate = true;
     this.form.controls['Id'].setValue(data['id']);
     this.modelParrentId = parseInt(data['parrentId']);

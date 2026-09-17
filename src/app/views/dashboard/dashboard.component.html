@@ -8,13 +8,13 @@
         <h2>Welcome Back, Admin</h2>
         <p>Stay updated with property activities, approvals, and pending tasks in real time.</p>
         <div class="summary-badge">
-          <span>Total Requests: {{summaryData?.totalRequests ?? 120}}</span>
-          <span class="separator">|</span>
-          <span>Approved: {{summaryData?.approved ?? 85}}</span>
-          <span class="separator">|</span>
-          <span>Pending: {{summaryData?.pending ?? 25}}</span>
-          <span class="separator">|</span>
-          <span>Rejected: {{summaryData?.rejected ?? 10}}</span>
+          <span class="info-pills">Total Requests: {{summaryData?.totalRequests ?? 120}}</span>
+          
+          <span class="info-pills">Approved: {{summaryData?.approved ?? 85}}</span>
+       
+          <span class="info-pills">Pending: {{summaryData?.pending ?? 25}}</span>
+      
+          <span class="info-pills">Rejected: {{summaryData?.rejected ?? 10}}</span>
         </div>
       </div>
     </div>
@@ -134,34 +134,56 @@
       <div class="row">
         <!-- Analytics Overview Chart -->
         <div class="col-lg-8 mb-4">
-          <div class="chart-card" style="background: #fff; border-radius: 20px; padding: 24px; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
-            <div class="chart-header" style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;">
-              <div>
-                <div style="display: flex; align-items: center; gap: 10px;">
-                  <div style="background: #f4f6fc; padding: 6px; border-radius: 6px; display: flex;">
-                    <img src="assets/images/icons/bar_chart.svg" alt="bar chart" style="width: 30px; height: 30px;" />
-                  </div>
-                  <h5 style="margin: 0; font-weight: 600; font-size: 16px; color: #1e293b;">{{'Analytics Overview'|translate}}</h5>
+          <div class="chart-card" style="background: #fff; border-radius: 20px; padding: 24px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); height: 100%;">
+            <div class="chart-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+              <div class="chart-title-wrap" style="display: flex; align-items: center; gap: 10px;">
+                <div style="background: #f4f6fc; padding: 8px; border-radius: 8px; display: flex; align-items: center; justify-content: center; width: 38px; height: 38px;">
+                  <img src="assets/images/icons/bar_chart.svg" alt="bar chart" style="width: 22px; height: 22px;" />
                 </div>
-                <div style="margin-top: 15px; display: flex; align-items: baseline; gap: 8px;">
-                  <h2 style="margin: 0; font-weight: 700; font-size: 32px; color: #1e293b;">682</h2>
-                  <span style="color: #94a3b8; font-size: 14px; font-weight: 500;">Approved</span>
-                </div>
+                <h5 style="margin: 0; font-weight: 600; font-size: 17px; color: #1e293b;">{{'Analytics Overview'|translate}}</h5>
               </div>
-              <div style="background: #f4f6fc; padding: 8px 12px; border-radius: 8px; cursor: pointer; display: flex;">
-                <img src="assets/images/icons/filter-icon.svg" alt="filter" style="width: 26px; height: 26px;" />
+
+              <div class="overview-filter-wrap" style="position: relative;">
+                <button type="button" class="overview-filter-button" (click)="toggleOverviewFilter()" aria-label="Select analytics overview filter" style="background: #f4f6fc; border: none; width: 42px; height: 42px; border-radius: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.08);">
+                  <img src="assets/images/icons/filter-icon.svg" alt="filter" style="width: 22px; height: 22px; opacity: 0.9;" />
+                </button>
+
+                <div *ngIf="isOverviewFilterOpen" class="overview-filter-dropdown" style="position: absolute; top: calc(100% + 8px); right: 0; min-width: 190px; background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12); padding: 8px; z-index: 20;">
+                  <button *ngFor="let option of overviewFilterOptions"
+                          type="button"
+                          (click)="applyOverviewFilter(option)"
+                          [class.active]="selectedOverviewFilter === option"
+                          style="display: flex; align-items: center; justify-content: space-between; width: 100%; border: none; background: transparent; text-align: left; padding: 10px 12px; border-radius: 8px; color: #1e293b; font-size: 14px; font-weight: 500; cursor: pointer;">
+                    <span>{{ option }}</span>
+                    <i *ngIf="selectedOverviewFilter === option" class="fa-solid fa-check" style="color: #7c3aed; font-size: 12px;"></i>
+                  </button>
+                </div>
               </div>
             </div>
-            <div class="chart-body">
-              <div style="height: 300px;" *ngIf="mainChart?.data">
-                <c-chart type="bar" [data]="mainChart.data" [options]="mainChart.options" height="300">
-                </c-chart>
+
+            <div class="chart-summary-row" style="display: flex; align-items: baseline; gap: 12px; margin: 14px 0 8px 0; padding-left: 4px;">
+              <h2 style="margin: 0; font-weight: 800; font-size: 52px; line-height: 1; color: #1e293b;">{{ getSelectedOverviewTotal() }}</h2>
+              <span style="color: #94a3b8; font-size: 16px; font-weight: 500;">{{ selectedOverviewFilter }}</span>
+            </div>
+
+            <div class="chart-body" style="padding: 0;">
+              <div class="overview-chart-area" style="position: relative; height: 290px; padding-top: 50px;">
+                <div class="overview-chart-gridline" style="position: absolute; top: 26px; left: 0; right: 0; border-top: 2px dashed rgba(96, 165, 250, 0.9);"></div>
+                <div class="overview-chart-bars" style="position: relative; z-index: 1; height: 270px; display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; padding: 0;">
+                  <div *ngFor="let bar of overviewChartBars" class="overview-bar-column" style="flex: 1 1 0; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; min-width: 0; max-width: 64px;">
+                    <div style="width: 100%; height: 100%; display: flex; align-items: flex-end; justify-content: center;">
+                      <div class="overview-bar" [class.active]="bar.active" [ngStyle]="{ height: bar.value + '%', width: '100%', maxWidth: '52px', borderRadius: '22px', background: bar.active ? 'linear-gradient(180deg, #b94c9a 0%, #a43788 100%)' : '#F6F6F6', boxShadow: bar.active ? '0 10px 20px rgba(163, 55, 136, 0.2)' : 'none', minHeight: '18px' }"></div>
+                    </div>
+                    <span style="margin-top: 12px; font-size: 13px; color: #94a3b8; font-weight: 500;">{{ bar.label }}</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Monthly Analytics Chart -->
+        <!-- Monthly Analytics Chart --> 
+
         <div class="col-lg-4 mb-4">
           <div class="chart-card" style="background: #fff; border-radius: 20px; padding: 24px; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
             <div class="chart-header" style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;">
@@ -176,26 +198,27 @@
             </div>
             <div class="chart-body">
               <div style="height: 300px; display: flex; align-items: flex-end; justify-content: space-between; padding: 10px 0;">
-                <div style="width: 24px; height: 100%; background: #f1f5f9; border-radius: 20px; position: relative; overflow: hidden;">
-                  <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 50%; background: linear-gradient(180deg, var(--ap-purple, #6d28d9) 0%, var(--ap-purple, #6d28d9) 100%); border-radius: 20px;"></div>
+                <div style="width: 24px; height: 100%; background: #f1f5f9; border-radius: 20px; position: relative; overflow: hidden;"> 
+
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 50%; background: linear-gradient(70deg, #791752 22.91%, #FE75C8 100%);; border-radius: 20px;"></div>
                 </div>
                 <div style="width: 24px; height: 100%; background: #f1f5f9; border-radius: 20px; position: relative; overflow: hidden;">
-                  <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 30%; background: linear-gradient(180deg, var(--ap-purple, #6d28d9) 0%, var(--ap-purple, #6d28d9) 100%); border-radius: 20px;"></div>
+                  <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 30%; background: linear-gradient(70deg, #791752 22.91%, #FE75C8 100%); border-radius: 20px;"></div>
                 </div>
                 <div style="width: 24px; height: 100%; background: #f1f5f9; border-radius: 20px; position: relative; overflow: hidden;">
-                  <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 75%; background: linear-gradient(180deg, var(--ap-purple, #6d28d9) 0%, var(--ap-purple, #6d28d9) 100%); border-radius: 20px;"></div>
+                  <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 75%; background: linear-gradient(70deg, #791752 22.91%, #FE75C8 100%); border-radius: 20px;"></div>
                 </div>
                 <div style="width: 24px; height: 100%; background: #f1f5f9; border-radius: 20px; position: relative; overflow: hidden;">
-                  <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 45%; background: linear-gradient(180deg, var(--ap-purple, #6d28d9) 0%, var(--ap-purple, #6d28d9) 100%); border-radius: 20px;"></div>
+                  <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 45%; background: linear-gradient(70deg, #791752 22.91%, #FE75C8 100%); border-radius: 20px;"></div>
                 </div>
                 <div style="width: 24px; height: 100%; background: #f1f5f9; border-radius: 20px; position: relative; overflow: hidden;">
-                  <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 60%; background: linear-gradient(180deg, var(--ap-purple, #6d28d9) 0%, var(--ap-purple, #6d28d9) 100%); border-radius: 20px;"></div>
+                  <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 60%; background: linear-gradient(70deg, #791752 22.91%, #FE75C8 100%); border-radius: 20px;"></div>
                 </div>
                 <div style="width: 24px; height: 100%; background: #f1f5f9; border-radius: 20px; position: relative; overflow: hidden;">
-                  <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 90%; background: linear-gradient(180deg, var(--ap-purple, #6d28d9) 0%, var(--ap-purple, #6d28d9) 100%); border-radius: 20px;"></div>
+                  <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 90%; background: linear-gradient(70deg, #791752 22.91%, #FE75C8 100%); border-radius: 20px;"></div>
                 </div>
                 <div style="width: 24px; height: 100%; background: #f1f5f9; border-radius: 20px; position: relative; overflow: hidden;">
-                  <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 20%; background: linear-gradient(180deg, var(--ap-purple, #6d28d9) 0%, var(--ap-purple, #6d28d9) 100%); border-radius: 20px;"></div>
+                  <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 20%; background: linear-gradient(70deg, #791752 22.91%, #FE75C8 100%); border-radius: 20px;"></div>
                 </div>
               </div>
             </div>

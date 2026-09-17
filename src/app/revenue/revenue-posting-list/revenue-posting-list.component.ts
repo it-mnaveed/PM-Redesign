@@ -128,7 +128,7 @@ export class RevenuePostingListComponent implements OnInit, AfterViewInit {
           if (Id > 0) {
             this.SelectedAgreement = result.data;
             console.log(JSON.stringify(this.SelectedAgreement.revenueDetails))
-            debugger;
+            
             this.TotalAmountOfSelectedAgreement = this.SelectedAgreement?.revenueDetails
               ?.reduce((sum: number, item: any) => sum + (Number(item.u_Amt) || 0), 0) || 0;
             ($('#detailModal') as any).modal('show');
@@ -145,7 +145,7 @@ export class RevenuePostingListComponent implements OnInit, AfterViewInit {
     });
   }
   exportDataDetail() {
-    debugger;
+    
     if (!this.SelectedAgreement || this.SelectedAgreement.length == 0) {
       this.toastr.info("There is no data available to export!", "Info");
       return;

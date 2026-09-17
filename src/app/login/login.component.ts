@@ -70,7 +70,7 @@ export class LoginComponent {
 
   get f() { return this.form.controls; }
   onSubmit() {
-    debugger;
+    
     this.submitted = true;
     if (this.form.invalid) {
       return;
@@ -81,7 +81,7 @@ export class LoginComponent {
     this.form.controls['BackendUrl'].setValue(BackendURL);
     this._service.Post(this.form.value, Url).subscribe((res: any) => {
       if (res.status == 1) {
-        debugger;
+        
         localStorage.setItem('token', res.data);
         const token = localStorage.getItem('token');
         if (token) {
@@ -181,7 +181,7 @@ export class LoginComponent {
   }
   get otp() { return this.otpVerificationFrom.controls; }
   VerifyOtp() {
-    debugger;
+    
 
     this.otpSubmitted = true;
     if (this.otpVerificationFrom.invalid) {
@@ -230,7 +230,7 @@ export class LoginComponent {
   get reset() { return this.resetPasswordForm.controls; }
 
   ResetPassword() {
-    debugger;
+    
     this.Resetsubmitted = true;
     if (this.resetPasswordForm.invalid) {
       return;

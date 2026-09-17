@@ -131,7 +131,7 @@ export class RevenuePopulationComponent implements OnInit, AfterViewInit {
   }
 
   nextStep() {
-    debugger;
+    
     if (this.currentStep < this.totalSteps) {
       this.currentStep++;
       if (this.currentStep === 2) {
@@ -167,7 +167,7 @@ export class RevenuePopulationComponent implements OnInit, AfterViewInit {
     this._service.Get(url).subscribe({
       next: result => {
         if (result.status) {
-          debugger;
+          
           this.ProjectList = result.data
           // this.U_ReturnTypeVlaues = result.data.filter((item: any) => item.field === 'ReturnType');
           // this.AttachmentTypeListValues = result.data.filter((item: any) => item.field === 'AttachmentType');
@@ -184,7 +184,7 @@ export class RevenuePopulationComponent implements OnInit, AfterViewInit {
     this._service.Get(url).subscribe({
       next: result => {
         if (result.status) {
-          debugger;
+          
           this.BuildingList = result.data
           // this.U_ReturnTypeVlaues = result.data.filter((item: any) => item.field === 'ReturnType');
           // this.AttachmentTypeListValues = result.data.filter((item: any) => item.field === 'AttachmentType');
@@ -201,7 +201,7 @@ export class RevenuePopulationComponent implements OnInit, AfterViewInit {
     this._service.Get(url).subscribe({
       next: result => {
         if (result.status) {
-          debugger;
+          
           this.ZoneList = result.data
           // this.U_ReturnTypeVlaues = result.data.filter((item: any) => item.field === 'ReturnType');
           // this.AttachmentTypeListValues = result.data.filter((item: any) => item.field === 'AttachmentType');
@@ -218,7 +218,7 @@ export class RevenuePopulationComponent implements OnInit, AfterViewInit {
     this._service.Get(url).subscribe({
       next: result => {
         if (result.status) {
-          debugger;
+          
           this.SubZoneList = result.data
           // this.U_ReturnTypeVlaues = result.data.filter((item: any) => item.field === 'ReturnType');
           // this.AttachmentTypeListValues = result.data.filter((item: any) => item.field === 'AttachmentType');
@@ -278,7 +278,7 @@ export class RevenuePopulationComponent implements OnInit, AfterViewInit {
   }
 
   onDataSubmit() {
-    debugger;
+    
     const payload = this.agreementItems
       .filter((item: any) => item.selected)
       .map((item: any) => ({
@@ -362,7 +362,7 @@ export class RevenuePopulationComponent implements OnInit, AfterViewInit {
   }
 
   onDataPost() {
-    debugger;
+    
 
     // Collect selected item IDs
     const selectedIds = this.draftdata
@@ -403,7 +403,7 @@ export class RevenuePopulationComponent implements OnInit, AfterViewInit {
     });
   }
   onCancalPost() {
-    debugger;
+    
 
     // Collect selected item IDs
     const selectedIds = this.draftdata

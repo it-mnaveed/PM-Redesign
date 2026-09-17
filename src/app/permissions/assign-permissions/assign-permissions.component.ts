@@ -81,7 +81,7 @@ export class AssignPermissionsComponent implements OnInit {
     this._service.Get(url).subscribe({
       next: result => {
         if (result.status) {
-          debugger;
+          
           this.PermissionsList = result.data;
           this.groupedAssignedPermissions = this.groupPermissionsByParent(this.PermissionsList.assignPermissions);
           this.groupedNotAssignedPermissions = this.groupPermissionsByParent(this.PermissionsList.notassignPermissions);

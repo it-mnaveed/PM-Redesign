@@ -55,7 +55,7 @@ export class performaInvoicelistingComponent implements OnInit, AfterViewInit {
     private expExcel: ExcelExportService
   ) {
     this.AllowedPermissions = this._permService.getPermissions();
-    debugger;
+    
     this.GenericForma = this._sharedHelper.getGenericFormate();
 
   }
@@ -104,7 +104,7 @@ export class performaInvoicelistingComponent implements OnInit, AfterViewInit {
         if (result.status) {
           debugger
           if (Id > 0) {
-            debugger;
+            
             this.SelectedAgreement = result.data[0];
             if (this.SelectedAgreement.attachements) {
               for (let i = 0; i < this.SelectedAgreement.attachements.length; i++) {

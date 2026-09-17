@@ -115,7 +115,7 @@ export class AgreementListingComponent implements OnInit, AfterViewInit {
       next: result => {
         if (result.status) {
           if (Id > 0) {
-            debugger;
+            
             this.SelectedAgreement = result.data[0];
             for (let i = 0; i < this.SelectedAgreement.agreementAttachments.length; i++) {
               if (this.SelectedAgreement.agreementAttachments[i].u_AttName) {
@@ -124,7 +124,7 @@ export class AgreementListingComponent implements OnInit, AfterViewInit {
               }
             }
             if (this.SelectedAgreement.approvalStatus == 'Approved') {
-              debugger;
+              
               if (this.AgreementActionsPermissions.quotation) {
                 this.SelectedAgreement.quotationPermission = true;
               }
@@ -184,14 +184,14 @@ export class AgreementListingComponent implements OnInit, AfterViewInit {
     this._service.Get(url).subscribe({
       next: result => {
         if (result.status) {
-          debugger;
+          
           this.AgreementList = result.data.sort((a: any, b: any) => {
             return new Date(b.createdDate).getTime() - new Date(a.createdDate).getTime();
           });
           console.log(JSON.stringify(this.AgreementList))
           this.rerender();
         } else {
-          debugger;
+          
           this.toastr.error(result.message, "Error", {
             progressBar: true,
             closeButton: true
@@ -199,7 +199,7 @@ export class AgreementListingComponent implements OnInit, AfterViewInit {
         }
       },
       error: (err: any) => {
-        debugger;
+        
       },
     });
   }
@@ -271,7 +271,7 @@ export class AgreementListingComponent implements OnInit, AfterViewInit {
   }
 
   loadMeteredItems(unitCode: any) {
-    debugger;
+    
     const exist = this.SelectedAgreement.agreementItems.find((m: any) => m.u_UnitCode == unitCode);
     if (exist) {
       const currentHistory = exist.agreementMaintenceBills || [];
@@ -297,7 +297,7 @@ export class AgreementListingComponent implements OnInit, AfterViewInit {
   }
 
   loadHistory(unitCode: any) {
-    debugger;
+    
     let exist = this.SelectedAgreement.agreementItems.find((m: any) => m.u_UnitCode == unitCode);
     if (exist) {
       this.SelectedItemMaintenanceBillHistory = exist.agreementMaintenceBills;
@@ -391,7 +391,7 @@ export class AgreementListingComponent implements OnInit, AfterViewInit {
       this._service.Post(data, url).subscribe({
         next: (result: any) => {
           if (result.status) {
-            debugger;
+            
             this.AttachmentType = "";
             this.Description = "";
             this.FileURL = "";

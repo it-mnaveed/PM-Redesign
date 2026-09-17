@@ -198,12 +198,12 @@ export class AdvanceSearchComponent implements OnInit, AfterViewInit {
 
   }
   GetUnitCategories() {
-    debugger;
+    
     let url = '/MasterData/GetUnitCategory';
     this._service.Get(url).subscribe({
       next: result => {
         if (result.status) {
-          debugger;
+          
           this.UnitCategoriesList = result.data;
 
         }
@@ -357,7 +357,7 @@ export class AdvanceSearchComponent implements OnInit, AfterViewInit {
     this._service.Get(url).subscribe({
       next: result => {
         if (result.status) {
-          debugger;
+          
           this.ProjectList = result.data
           // this.U_ReturnTypeVlaues = result.data.filter((item: any) => item.field === 'ReturnType');
           // this.AttachmentTypeListValues = result.data.filter((item: any) => item.field === 'AttachmentType');
@@ -375,7 +375,7 @@ export class AdvanceSearchComponent implements OnInit, AfterViewInit {
     this._service.Get(url).subscribe({
       next: result => {
         if (result.status) {
-          debugger;
+          
           this.BuildingList = result.data
           // this.U_ReturnTypeVlaues = result.data.filter((item: any) => item.field === 'ReturnType');
           // this.AttachmentTypeListValues = result.data.filter((item: any) => item.field === 'AttachmentType');
@@ -393,7 +393,7 @@ export class AdvanceSearchComponent implements OnInit, AfterViewInit {
     this._service.Get(url).subscribe({
       next: result => {
         if (result.status) {
-          debugger;
+          
           this.ZoneList = result.data
           // this.U_ReturnTypeVlaues = result.data.filter((item: any) => item.field === 'ReturnType');
           // this.AttachmentTypeListValues = result.data.filter((item: any) => item.field === 'AttachmentType');
@@ -411,7 +411,7 @@ export class AdvanceSearchComponent implements OnInit, AfterViewInit {
     this._service.Get(url).subscribe({
       next: result => {
         if (result.status) {
-          debugger;
+          
           this.SubZoneList = result.data
           // this.U_ReturnTypeVlaues = result.data.filter((item: any) => item.field === 'ReturnType');
           // this.AttachmentTypeListValues = result.data.filter((item: any) => item.field === 'AttachmentType');

@@ -123,7 +123,7 @@ export class SharedHelper {
       if (!files || files.length === 0) {
         return resolve(''); // No file selected
       }
-      debugger;
+      
       const file = files[0];
       const mimeType = file.type;
       const fileSize = file.size / 1000;

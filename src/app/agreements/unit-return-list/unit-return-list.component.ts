@@ -189,7 +189,7 @@ export class unitreturnlistComponent implements OnInit, AfterViewInit {
     });
   }
   onDropDownChange(data: 0) {
-    debugger;
+    
     this.GetUnitReturnList()
     //this.GetFilterSuspensionByAgreementType(data);
   }

@@ -146,18 +146,18 @@ export class RevenuePostingComponent implements OnInit, AfterViewInit, OnChanges
     this.submitted = true;
 
     if (this.Searchform.invalid) return;
-    debugger;
+    
     let data = this.Searchform.value;
     this.BPF_code = data.FromCustomer;
     this.BPT_code = data.ToCustomer;
     this.Due_date = data.DueDate;
-    debugger;
+    
     let formattedDate = this.datePipe.transform(this.Due_date, 'yyyy-MM-dd');
     let url = '/RevenuePosting/GetRevenuesRec?fromCustomer=' + this.BPF_code + '&toCustomer=' + this.BPT_code + '&duedate=' + formattedDate;
     this._service.Get(url).subscribe({
       next: result => {
         if (result.status) {
-          debugger;
+          
           this.renualItemList = result.data;
           this.rerender();
         } else {
@@ -183,7 +183,7 @@ export class RevenuePostingComponent implements OnInit, AfterViewInit, OnChanges
     });
   }
   onSubmit() {
-    debugger;
+    
     Object.keys(this.f).forEach(key => {
       if (key != 'ToCustomer' && key != 'Id') {
         this.f[key].setValidators([Validators.required]);
@@ -246,7 +246,7 @@ export class RevenuePostingComponent implements OnInit, AfterViewInit, OnChanges
     };
 
     let url = '/RevenuePosting/postRevenueRec';
-    debugger;
+    
     console.log(payload);
     this._service.Post(payload, url).subscribe({
       next: (result: any) => {
@@ -374,7 +374,7 @@ export class RevenuePostingComponent implements OnInit, AfterViewInit, OnChanges
   }
 
   onDropdownChange(data: any, DDType: any) {
-    debugger;
+    
     if (DDType === 'Series') {
       let exist = this.SeriesList.find((m: any) => m.id == data);
       if (exist) {
@@ -410,7 +410,7 @@ export class RevenuePostingComponent implements OnInit, AfterViewInit, OnChanges
       .map((item: any) => item.agrItemId);
   }
   exportDataDetail() {
-    debugger;
+    
     if (!this.renualItemList || this.renualItemList.length == 0) {
       this.toastr.info("There is no data available to export!", "Info");
       return;

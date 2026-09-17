@@ -431,7 +431,7 @@ export class SaleAgreementComponent implements OnInit, AfterViewInit {
       }
     }
 
-    debugger;
+    
     let PostedData = {
       Id: formValue.Id,
       Name: formValue.CustomerName, // if you want to send CustomerName as Name
@@ -516,7 +516,7 @@ export class SaleAgreementComponent implements OnInit, AfterViewInit {
       //  U_GDate: x.U_GDate ? new Date(this.formatDateToISO(x.U_GDate)) : null
       U_GDate: x.U_GDate ? this._sharedHelper.formatBootstrapDateOnly(x.U_GDate) : null
     }));
-    debugger;
+    
     if (formValue.InstallmentPlan == "Customized") {
 
       const itemsBeforeTax = formValue.AgreementItems
@@ -544,7 +544,7 @@ export class SaleAgreementComponent implements OnInit, AfterViewInit {
         PostedData.AgreementItems
       );
     }
-    debugger;
+    
     console.log('UpdatedData', JSON.stringify(PostedData))
     let url = '/Agreement/postagreement';
     this._service.Post(PostedData, url).subscribe({
@@ -760,7 +760,7 @@ export class SaleAgreementComponent implements OnInit, AfterViewInit {
   }
 
   GenerateInstallments() {
-    debugger;
+    
     const startDate = new Date(this.form.controls['AgreementStartDate'].value);
     const endDate = new Date(this.form.controls['AgreementEndDate'].value);
     const plan = this.form.controls['InstallmentPlan'].value;
@@ -1663,7 +1663,7 @@ export class SaleAgreementComponent implements OnInit, AfterViewInit {
     });
 
     g.get('U_Tax')!.valueChanges.subscribe((amt: number | null) => {
-      debugger;
+      
       let newAmt = amt ?? 0;
       let beforeTax = g.get('U_AmtBeforeTax')?.value ?? 0;
 
@@ -2453,7 +2453,7 @@ export class SaleAgreementComponent implements OnInit, AfterViewInit {
 
 
     } else {
-      debugger;
+      
       if (postdata.Id) {
         ($('#cancelConfirmModal') as any).modal('show');
         this.deleteAttachmentData = postdata;
@@ -3211,7 +3211,7 @@ export class SaleAgreementComponent implements OnInit, AfterViewInit {
   }
 
   async UpdateAgreement(serverData: any) {
-    debugger;
+    
     this.GetItemMasterData(serverData.agType);
     this.SeriesName = serverData.series;
     this.form.patchValue({
@@ -3499,7 +3499,7 @@ export class SaleAgreementComponent implements OnInit, AfterViewInit {
     this.GenerateRevenueConfig();
   }
   private attachInstallmentCalculations(g: FormGroup) {
-    debugger;
+    
     const totalBeforeTax = this.UnitList?.reduce(
       (s: any, u: any) => s + Number(u.U_TotAfterDisc || 0), 0
     ) || 0;
@@ -3509,7 +3509,7 @@ export class SaleAgreementComponent implements OnInit, AfterViewInit {
     ) || 0;
 
     g.get('U_AmtBeforeTax')!.valueChanges.subscribe((amt: number | null) => {
-      debugger;
+      
       const newAmt = amt ?? 0;
 
       const newPct = totalBeforeTax === 0
@@ -3527,7 +3527,7 @@ export class SaleAgreementComponent implements OnInit, AfterViewInit {
     });
 
     g.get('U_Tax')!.valueChanges.subscribe((amt: number | null) => {
-      debugger;
+      
       let newAmt = amt ?? 0;
       let newAfterTax = 0;
       let beforeTax = g.get('U_AmtBeforeTax')?.value;
@@ -3546,7 +3546,7 @@ export class SaleAgreementComponent implements OnInit, AfterViewInit {
 
   }
   onTaxBlur(g: FormGroup) {
-    debugger;
+    
     let tax = +g.get('U_Tax')!.value || 0;
     const beforeTax = +g.get('U_AmtBeforeTax')!.value || 0;
 
