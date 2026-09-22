@@ -84,17 +84,30 @@
         background: var(--ap-purple-gradient) !important;
         color: #fff !important;
     }
+//  .customSidebar .sidebar-nav .nav-group.nav-group-active .nav-group-toggle
 
     /* Sidebar / nav active states */
     .customSidebar .sidebar-nav>.nav-item:first-child .nav-link.active,
     .customSidebar .sidebar-nav .nav-link.active,
-    .customSidebar .sidebar-nav .nav-group.show .nav-group-toggle,
-    .customSidebar .sidebar-nav .nav-group.nav-group-active .nav-group-toggle {
-        background: var(--ap-purple) !important;
-        background: var(--ap-purple-gradient) !important;
-        color: #fff !important;
-        border-radius: 30px !important;
+    .customSidebar .sidebar-nav .nav-group.show .nav-group-toggle
+     {
+        // background: var(--ap-purple) !important;
+        // background: var(--ap-purple-gradient) !important;
+        // color: #fff !important;
+        // border-radius: 30px !important;
     }
+
+.customSidebar .sidebar-nav .nav-group.nav-group-active .nav-group-toggle {
+    border-radius: 30px;
+    color: #ffffff;
+    background: linear-gradient(170deg, var(--ap-purple-start) 0%, var(--ap-purple-end) 100%) !important;
+    i{
+        filter: brightness(0) invert(1)
+    }
+    &:after{
+        filter: brightness(0) invert(1)
+    }
+}
 
     // .customSidebar .sidebar-nav .nav-group.show .nav-group-toggle {
     //     background: transparent !important;
@@ -321,8 +334,8 @@
         }
     }
     .customSidebar .sidebar-nav .nav-group.nav-group-active .nav-group-toggle:hover .nav-icon{
-        filter: brightness(0) invert(1);
-        opacity: 1 !important;
+        // filter: brightness(0) invert(1);
+        // opacity: 1 !important;
     }
     .forgot-modal-logo{
         background-image: url(../assets/images/agree-pilot-logo.png);
@@ -339,7 +352,7 @@
         .info-pills{
         display: inline-block;
         background: #D455A1;
-        margin-right: 10px;
+        // margin-right: 10px;
         color: #fff;
         border-radius: 30px;
         padding: 8px 14px;
@@ -349,5 +362,17 @@
         .countSe{
                 background: linear-gradient(90deg, #791752 0%, #94236D 100%) !important;
         }
+    }
+    // .sidebar-nav .nav-group.nav-group-active > .nav-group-toggle::after{
+    //     transform: rotate(inherit) !important;
+    // }
+    .customSidebar .sidebar-nav .nav-group-items .nav-item .nav-link {
+    padding-left: 55px !important;
+    }
+    .ng-scrollbar-wrapper>scrollbar-y.scrollbar-control>.ng-scrollbar-track{
+        width: 3px !important;
+    }
+    .ng-scrollbar-wrapper>scrollbar-y.scrollbar-control{
+        width: 4px !important;
     }
 }

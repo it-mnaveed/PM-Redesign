@@ -2317,14 +2317,17 @@ table.table.dataTable.table-striped>tbody>tr:nth-of-type(2n+1)>* {
 }
 
 .customSidebar .sidebar-nav>.nav-item:first-child .nav-link.active {
-	background: linear-gradient(90deg, #2563EB 0%, #4F46E5 43.27%, #7C3AED 100%);
-	color: #ffff;
+	background: linear-gradient(170deg, var(--ap-purple-start) 0%, var(--ap-purple-end) 100%) !important;
+	color: #ffff !important;
 	border-radius: 30px;
+}
+.customSidebar .sidebar-nav > .nav-item:first-child .nav-link.active i {
+    filter: brightness(0) invert(1);
 }
 
 .customSidebar .sidebar-nav>.nav-item:first-child .nav-link.active .nav-icon {
 	color: #fff;
-	filter: brightness(0) invert(1);
+	// filter: brightness(0) invert(1);
 }
 
 .customSidebar .ng-scrollbar-track {
@@ -2336,7 +2339,7 @@ table.table.dataTable.table-striped>tbody>tr:nth-of-type(2n+1)>* {
 	// color: #000000;
 	color: transparent;
 	background-clip: text;
-	background-image: linear-gradient(90deg, #2563EB 0%, #4F46E5 43.27%, #7C3AED 100%);
+	// background-image: linear-gradient(90deg, #2563EB 0%, #4F46E5 43.27%, #7C3AED 100%);
 	// border-radius: 30px;
 	// padding-top: 10px;
 	// padding-bottom: 10px;
@@ -2344,8 +2347,8 @@ table.table.dataTable.table-striped>tbody>tr:nth-of-type(2n+1)>* {
 }
 
 .customSidebar .sidebar-nav .nav-group.show .nav-group-toggle {
-	background: linear-gradient(90deg, #2563EB 0%, #4F46E5 43.27%, #7C3AED 100%);
-	color: #fff;
+	// background: linear-gradient(90deg, #2563EB 0%, #4F46E5 43.27%, #7C3AED 100%);
+	color: #686868;
 	border-radius: 30px;
 	// padding-top: 10px;
 	// padding-bottom: 10px;
@@ -2353,12 +2356,12 @@ table.table.dataTable.table-striped>tbody>tr:nth-of-type(2n+1)>* {
 
 .customSidebar .sidebar-nav .nav-group.show .nav-group-toggle .nav-icon {
 	color: #ffff;
-	filter: brightness(0) invert(1);
+	// filter: brightness(0) invert(1);
 
 }
 
 .customSidebar .sidebar-nav .nav-group.show .nav-group-toggle::after {
-	filter: brightness(0) invert(1);
+	// filter: brightness(0) invert(1);
 }
 
 .sidebar-nav .nav-group-toggle::after {
@@ -2380,6 +2383,7 @@ table.table.dataTable.table-striped>tbody>tr:nth-of-type(2n+1)>* {
 	padding-top: 10px;
 	padding-bottom: 10px;
 	margin-bottom: 10px;
+	// margin-right: 15px;
 	// padding: 16px 22px;
 	// padding-right: 12px !important;
 }
@@ -2547,7 +2551,7 @@ table td.wrap-text {
 			height: calc(100% - 30px);
 			width: 3px;
 			background: #E7E7E7;
-			left: 40px;
+			left: 35px;
 			top: 12px;
 		}
 	}
@@ -2625,17 +2629,17 @@ table td.wrap-text {
   background: transparent !important; 
 }
 .customSidebar .sidebar-nav .nav-group.nav-group-active .nav-group-toggle::after {
-    filter: brightness(0) invert(1) !important;
+    // filter: brightness(0) invert(1) !important;
 	    color: #fff;
 }
 .customSidebar .sidebar-nav .nav-group.nav-group-active .nav-group-toggle .nav-icon {
     color: white;
-    filter: brightness(0) invert(1);
+    // filter: brightness(0) invert(1);
 }
 .customSidebar .sidebar-nav .nav-group.nav-group-active .nav-group-toggle {
-    background: linear-gradient(90deg, #2563EB 0%, #4F46E5 43.27%, #7C3AED 100%) !important;
+    // background: linear-gradient(90deg, #2563EB 0%, #4F46E5 43.27%, #7C3AED 100%) !important;
     border-radius: 30px;
-    color: #fff;
+    color: #686868;
 }
 .forgot-modal-logo{
 	background-image: url(../assets/images/abacus-logo.png);

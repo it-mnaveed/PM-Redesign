@@ -65,15 +65,32 @@
 
 
       </div>
-      <c-nav-item>
-        <a routerLink="/approvals/pending-documents" cNavLink class="bellIcon">
-          <!-- <i class="fa fa-bell"></i> -->
+      <div class="notification-wrapper" (click)="$event.stopPropagation()">
+        <button type="button" class="bellIcon" (click)="toggleNotifications()" aria-label="Notifications">
           <i class="fa-regular fa-bell"></i>
-          <!-- <svg cIcon name="cilBell" size="lg"></svg> -->
-          <!-- <img src="../../../../assets/images/bell-icon.png"> -->
           <span class="countSe">{{PendingDocumentList ?? 0}}</span>
-        </a>
-      </c-nav-item>
+        </button>
+
+        <div *ngIf="showNotifications" class="notification-dropdown" role="menu" aria-label="Notifications list">
+          <div class="notification-header">
+            <span>Notifications</span>
+          </div>
+
+          <div class="notification-list">
+            <button type="button" class="notification-item" *ngFor="let item of notificationItems" (click)="goToPendingDocuments()">
+              <span class="notification-dot"></span>
+              <span class="notification-content">
+                <strong>{{ item.title }}</strong>
+                <small>{{ item.message }}</small>
+              </span>
+            </button>
+          </div>
+
+          <button type="button" class="notification-view-all" (click)="goToPendingDocuments()">
+            View all
+          </button>
+        </div>
+      </div>
 
       <ng-container *ngTemplateOutlet="userDropdown"></ng-container>
       <!-- <c-nav-item>

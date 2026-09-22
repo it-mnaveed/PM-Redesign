@@ -310,15 +310,15 @@
   color: var(--cui-sidebar-nav-group-toggle-show-color);
 }
 
-::ng-deep .sidebar-nav .nav-group.nav-group-active > .nav-group-toggle::after {
-  transform: rotate(180deg);
-}
+// ::ng-deep .sidebar-nav .nav-group.nav-group-active > .nav-group-toggle::after {
+//   transform: rotate(180deg);
+// }
 
 // When the group is both active (custom class) AND open (show), de-duplicate
 // the 180deg so the arrow doesn't over-rotate
-::ng-deep .sidebar-nav .nav-group.nav-group-active.show > .nav-group-toggle::after {
-  transform: rotate(180deg);
-}
+// ::ng-deep .sidebar-nav .nav-group.nav-group-active.show > .nav-group-toggle::after {
+//   transform: rotate(180deg);
+// }
 
 
 ::ng-deep .nav-icon.custom-icon {
@@ -334,7 +334,7 @@
 
 ::ng-deep .customSidebar .nav-link.active .nav-icon.custom-icon,
 ::ng-deep .customSidebar .nav-link:hover .nav-icon.custom-icon {
-  filter: grayscale(0%) opacity(100%);
+  // filter: grayscale(0%) opacity(100%);
 }
 
 ::ng-deep .icon-administration {

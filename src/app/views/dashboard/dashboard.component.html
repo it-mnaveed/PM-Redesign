@@ -128,7 +128,93 @@
 
     <!-- Additional Info Cards -->
 
+<div class="property-showcase-section">
+      <div class="property-showcase-header">
+        <h3>12 Properties Found</h3>
+        <div class="property-showcase-meta">Dubai • For Sale • All Types</div>
+      </div>
 
+      <div class="property-grid">
+        <article class="property-card" *ngFor="let property of featuredProperties">
+          <div class="property-media">
+            <div class="property-badges">
+              <span *ngFor="let badge of property.badges" class="property-badge" [ngClass]="getBadgeClass(badge)">
+                <i *ngIf="badge === 'FEATURED'" class="fa-solid fa-star"></i>
+                {{ badge }}
+              </span>
+            </div>
+
+            <img [src]="property.image" [alt]="property.title" />
+
+            <button type="button" class="property-favorite" aria-label="Save property">
+              <i class="fa-regular fa-heart"></i>
+            </button>
+
+            <div class="property-media-footer">
+              <div class="property-media-dots" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+
+              <div class="property-media-count">
+                <i class="fa-solid fa-camera"></i>
+                <span>1/6</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="property-body">
+            <div class="property-price-row">
+              <h4>{{ property.price }}</h4>
+              <span class="property-type-tag">{{ property.type }}</span>
+            </div>
+
+            <h5 class="property-title">{{ property.title }}</h5>
+
+            <div class="property-location">
+              <i class="fa-solid fa-location-dot"></i>
+              {{ property.location }}
+            </div>
+
+            <div class="property-specs">
+              <span><i class="fa-solid fa-bed"></i> {{ property.beds }} Beds</span>
+              <span><i class="fa-solid fa-bath"></i> {{ property.baths }} Bath</span>
+              <span><i class="fa-solid fa-ruler-combined"></i> {{ property.sqft }}</span>
+            </div>
+            <div class="viewPils">
+              <span class="info-pills">Corner Plot</span>
+              <span class="info-pills">Park Facing</span>
+              <span class="info-pills">+2</span>
+            </div>
+
+            <div class="property-footer">
+              <div class="agent-box">
+                <span class="agent-badge">{{ property.agent }}</span>
+                <span class="agent-name">{{ property.agentName }}</span>
+                <span class="agent-verified"><i class="fa-solid fa-circle-check"></i></span>
+              </div>
+
+              <div class="property-time"><i class="fa-regular fa-clock"></i> {{ property.status }}</div>
+            </div>
+
+            <div class="property-actions">
+              <button class="action-btn purple" type="button">
+                <i class="fa-solid fa-phone"></i>
+                Call
+              </button>
+              <button class="action-btn green" type="button">
+                <i class="fa-solid fa-comment-dots"></i>
+                Chat
+              </button>
+              <button class="action-btn lightGray" type="button" aria-label="Open property">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
     <!-- Charts Section -->
     <div class="charts-section mt-4">
       <div class="row">
@@ -226,5 +312,7 @@
         </div>
       </div>
     </div>
+
+    
   </div>
 </div>

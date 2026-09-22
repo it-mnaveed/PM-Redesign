@@ -39,6 +39,53 @@ export class DashboardComponent implements OnInit {
   isOverviewFilterOpen = false;
   overviewChartMonths: string[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   overviewChartBars: Array<{ label: string; value: number; active: boolean }> = [];
+  featuredProperties = [
+    {
+      image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80',
+      badges: ['FEATURED', 'FOR SALE', 'NEW'],
+      price: 'PKR 4.5 Crore',
+      type: 'Villa',
+      title: 'Modern 5-Bed Luxury Villa with Private Pool',
+      location: ' DHA Phase 6, Block L, Lahore',
+      beds: 5,
+      baths: 6,
+      sqft: '5,400 sqf',
+      agent: 'ZP',
+      agentName: 'Zameen Premier',
+      status: '2 hours ago',
+      accent: 'purple'
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80',
+      badges: ['FEATURED', 'FOR RENT'],
+      price: 'AED 125,000',
+      type: 'Apartment',
+      title: 'Spacious 3-Bed Apartment with Full Sea View',
+      location: 'Marina Walk, Tower 4, Dubai',
+      beds: 3,
+      baths: 3,
+      sqft: '2,100 sqft',
+      agent: 'BC',
+      agentName: 'Bayut Certified',
+      status: '1 day ago',
+      accent: 'pink'
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=80',
+      badges: ['FOR SALE'],
+      price: 'PKR 2.85 Crore',
+      type: 'House',
+      title: '10 Mara Double-Storey House — Prime Location',
+      location: 'Bahria Town Phase 7, Rawalpindi',
+      beds: 4,
+      baths: 3,
+      sqft: '2,250 sqft',
+      agent: 'BP',
+      agentName: 'Bahria Properties',
+      status: '3 days ago',
+      accent: 'blue'
+    }
+  ];
   constructor(
     private chartsData: DashboardChartsData,
     private toastr: ToastrService,
@@ -209,6 +256,10 @@ export class DashboardComponent implements OnInit {
       error: (err: any) => { },
     });
   }
+  getBadgeClass(value: string): string {
+    return value.toLowerCase().replace(/\s+/g, '-');
+  }
+
   GetSummary() {
 
     let url = '/MasterData/GetDashboardSummary';

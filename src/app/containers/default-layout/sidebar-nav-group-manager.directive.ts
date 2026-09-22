@@ -21,13 +21,12 @@ import {
  * and is therefore persistent.
  *
  * Behavior:
- * - When a top-level group is opened → it becomes the active group.
- *   `nav-group-active` is moved to it; removed from any previous active group.
- * - When the active group is collapsed → it STAYS marked `nav-group-active`.
- *   The arrow/submenu close via CoreUI's animation (`open` flag), but the
- *   "active" visual (background, toggle color, arrow) remains.
- * - When a DIFFERENT group is opened → `nav-group-active` shifts to that group.
- *   The previously active group's `nav-group-active` is removed.
+ * - A top-level group becomes active only when one of its child nav items has
+ *   the active/selected state (`.active`, `.router-link-active`, etc.).
+ * - Clicking the group toggle to expand/collapse the menu no longer forces
+ *   `nav-group-active`; it only remains while a child submenu item is active.
+ * - When a different child route becomes active → `nav-group-active` shifts to that
+ *   group. The previously active group's class is removed.
  * - Sidebar collapse/expand: `nav-group-active` is never touched — state persists.
  * - Nested sub-groups are ignored (only top-level groups are managed).
  */
@@ -53,7 +52,7 @@ export class SidebarNavGroupManagerDirective implements AfterViewInit, OnDestroy
     // 2. Direct classList manipulation doesn't trigger change detection.
     // 3. Click listener doesn't trigger change detection.
     this.ngZone.runOutsideAngular(() => {
-      // --- MutationObserver: track which group gains `show` ---
+      // --- MutationObserver: track which top-level group has an active child link ---
       this.mutationObserver = new MutationObserver((mutations) =>
         this.handleMutations(mutations)
       );
@@ -63,6 +62,9 @@ export class SidebarNavGroupManagerDirective implements AfterViewInit, OnDestroy
         attributeFilter: ['class'],
         attributeOldValue: true,
       });
+
+      // Initialize active group from current DOM state.
+      this.syncActiveGroupFromActiveChild();
 
       // --- Click listener: clear active group on standalone top-level link click ---
       const host = this.el.nativeElement;
@@ -84,28 +86,22 @@ export class SidebarNavGroupManagerDirective implements AfterViewInit, OnDestroy
   // ---------------------------------------------------------------------------
 
   /**
-   * Processes DOM class mutations. We look for a top-level nav-group
-   * gaining the `show` class (meaning CoreUI opened it or a route matched).
-   * When found, we transfer `nav-group-active` to that group.
+   * Processes DOM class mutations and updates which top-level nav group is
+   * visually active based on whether one of its child links is currently active.
    */
   private handleMutations(mutations: MutationRecord[]): void {
     const topLevelGroups = this.getTopLevelNavGroups();
+    const activeGroup = topLevelGroups.find(group => this.groupHasActiveChild(group));
 
-    for (const mutation of mutations) {
-      const target = mutation.target as HTMLElement;
+    if (activeGroup) {
+      this.setActiveGroup(activeGroup);
+      return;
+    }
 
-      // Only care about top-level c-sidebar-nav-group host elements
-      if (!topLevelGroups.includes(target)) continue;
-
-      const hadShow = (mutation.oldValue ?? '').split(/\s+/).includes('show');
-      const hasShow = target.classList.contains('show');
-
-      // A group just gained `show` — this is the new active group
-      if (hasShow && !hadShow) {
-        this.setActiveGroup(target);
-        // Only one group can be opening at a time; stop processing this batch
-        break;
-      }
+    // No active child anywhere in the top-level groups -> clear the previously
+    // tracked active group, if any.
+    if (this.activeGroup) {
+      this.clearActiveGroup();
     }
   }
 
@@ -153,6 +149,36 @@ export class SidebarNavGroupManagerDirective implements AfterViewInit, OnDestroy
       subtree: true,
       attributeFilter: ['class'],
       attributeOldValue: true,
+    });
+  }
+
+  /**
+   * Finds which top-level group contains an active child link and sets it as the
+   * active visual group. If no child link is active, clears the previous state.
+   */
+  private syncActiveGroupFromActiveChild(): void {
+    const activeGroup = this.getTopLevelNavGroups().find(group => this.groupHasActiveChild(group));
+
+    if (activeGroup) {
+      this.setActiveGroup(activeGroup);
+    } else {
+      this.clearActiveGroup();
+    }
+  }
+
+  /**
+   * Returns true when a top-level group contains a child item that is active.
+   * Supports both Angular router active classes and the standard `.active` class.
+   */
+  private groupHasActiveChild(group: HTMLElement): boolean {
+    return Array.from(group.querySelectorAll<HTMLElement>('.nav-link')).some(link => {
+      const isActive =
+        link.classList.contains('active') ||
+        link.classList.contains('router-link-active') ||
+        link.classList.contains('router-link-exact-active') ||
+        link.getAttribute('aria-current') === 'page';
+
+      return isActive;
     });
   }
 

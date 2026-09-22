@@ -33,6 +33,21 @@ export class DefaultHeaderComponent extends HeaderComponent implements OnInit {
   UserImage: any;
   currentLang: any = 'en';
   PendingDocumentList: any;
+  showNotifications = false;
+  notificationItems = [
+    {
+      title: 'Pending approvals',
+      message: 'There are documents waiting for your review.'
+    },
+    {
+      title: 'Approval reminder',
+      message: 'A few approvals need your attention today.'
+    },
+    {
+      title: 'Document review',
+      message: 'New items were submitted and require action.'
+    }
+  ];
 
   constructor(
     private classToggler: ClassToggleService,
@@ -138,6 +153,25 @@ export class DefaultHeaderComponent extends HeaderComponent implements OnInit {
       },
       error: (err: any) => { },
     });
+  }
+
+  toggleNotifications(): void {
+    this.showNotifications = !this.showNotifications;
+  }
+
+  closeNotifications(): void {
+    this.showNotifications = false;
+  }
+
+  goToPendingDocuments(): void {
+    this.closeNotifications();
+    this.route.navigate(['/approvals/pending-documents']);
+  }
+
+  onDocumentClick(event: Event): void {
+    if (this.showNotifications && !this.el.nativeElement.contains(event.target)) {
+      this.closeNotifications();
+    }
   }
 
   getUserInitials(fullName: string): string {
