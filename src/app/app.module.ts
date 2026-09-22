@@ -56,7 +56,7 @@ export const configFactory = (configService: ConfigService) => {
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
-//notifications issues
+//notifications iss
 const APP_CONTAINERS = [
   DefaultFooterComponent,
   DefaultHeaderComponent,
