@@ -148,7 +148,23 @@ export class DefaultHeaderComponent extends HeaderComponent implements OnInit {
     this._service.Get(url).subscribe({
       next: result => {
         if (result.status) {
-          this.PendingDocumentList = result.data.length
+          const documents = result.data || [];
+          this.PendingDocumentList = documents.length;
+
+          const docCounts: { [key: string]: number } = {};
+          for (const doc of documents) {
+            const type = doc.docType || 'Other';
+            docCounts[type] = (docCounts[type] || 0) + 1;
+          }
+
+          this.notificationItems = Object.keys(docCounts).map(type => ({
+            title: type,
+            message: `You have ${docCounts[type]} pending document(s) for review.`
+          }));
+
+          if (this.PendingDocumentList === 0) {
+            this.showNotifications = false;
+          }
         }
       },
       error: (err: any) => { },
@@ -156,7 +172,11 @@ export class DefaultHeaderComponent extends HeaderComponent implements OnInit {
   }
 
   toggleNotifications(): void {
-    this.showNotifications = !this.showNotifications;
+    if (this.PendingDocumentList > 0) {
+      this.showNotifications = !this.showNotifications;
+    } else {
+      this.showNotifications = false;
+    }
   }
 
   closeNotifications(): void {
