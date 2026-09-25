@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -188,8 +188,9 @@ export class DefaultHeaderComponent extends HeaderComponent implements OnInit {
     this.route.navigate(['/approvals/pending-documents']);
   }
 
+  @HostListener('document:click', ['$event'])
   onDocumentClick(event: Event): void {
-    if (this.showNotifications && !this.el.nativeElement.contains(event.target)) {
+    if (this.showNotifications) {
       this.closeNotifications();
     }
   }
