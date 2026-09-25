@@ -20,6 +20,7 @@ import { BulkInstallmentsListComponent } from './bulk-installments-list/bulk-ins
 import { QuotationGenerationComponent } from '../renewal/quotation-generation/quotation-generation.component';
 import { RevenuePopulationComponent } from '../revenue/revenue-population/revenue-population.component';
 import { RevenuePostingListComponent } from '../revenue/revenue-posting-list/revenue-posting-list.component';
+//Commentst
 const routes: Routes = [
   { path: 'sale-agreement', component: SaleAgreementComponent, canActivate: [PermissionsGuard], data: { title: 'Agreement' } },
   { path: 'agreement-listing', component: AgreementListingComponent, canActivate: [PermissionsGuard], data: { title: 'Agreement List' } },
